@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<module>
+		<enabled>true</enabled>
+		<visible>true</visible>
+		<icon>brand</icon>
+		<usetopic>false</usetopic>
+		<category>e-commerce</category>
+	</module>
+</config>

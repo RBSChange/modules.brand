@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blocks>
+	<block type="modules_brand_DashboardGeneralStatistics" display="" icon="statistics" dashboard="true" label="&amp;modules.brand.bo.blocks.DashboardGeneralStatistics.Title;" />
+</blocks>

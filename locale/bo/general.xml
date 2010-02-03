@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<localization>
+	<entity id="module-name">
+		<locale lang="fr">marques</locale>
+		<locale lang="en">brands</locale>
+	</entity>
+
+	<entity id="tree-root-name">
+		<locale lang="fr">marques</locale>
+		<locale lang="en">brands</locale>
+	</entity>
+
+	<entity id="system-folder-name">
+		<locale lang="fr">marques</locale>
+		<locale lang="en">brands</locale>
+	</entity>
+	
+	<entity id="column.websiteURL">
+		<locale lang="fr">adresse du site internet de la marque</locale>
+		<locale lang="en">brand's website URL</locale>
+	</entity>
+</localization>

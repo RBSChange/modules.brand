@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<localization>
+	<entity id="create_">
+		<locale lang="fr">créer</locale>
+		<locale lang="en">create</locale>
+		<locale lang="de">neu</locale>
+	</entity>
+	<entity id="Create-Brand">
+		<locale lang="fr">créer une marque</locale>
+		<locale lang="en">create brand</locale>
+	</entity>
+</localization>

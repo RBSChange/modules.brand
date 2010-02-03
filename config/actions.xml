@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+	<action name="createBrand">
+		<parameter name="listWidget" />
+		<body><![CDATA[
+			this.createDocumentEditor('modules_brand_brand', listWidget.getSelectedItems()[0].id);
+		]]></body>
+	</action>
+	<action name="createFolder">
+		<parameter name="listWidget" />
+		<body><![CDATA[
+			this.createDocumentEditor('modules_brand_folder', listWidget.getSelectedItems()[0].id);
+		]]></body>
+	</action>
+</actions>

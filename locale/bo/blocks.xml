@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<localization>
+	<entity id="dashboardgeneralstatistics.title">
+		<locale lang="fr">statistiques générales sur les marques</locale>
+		<locale lang="en">brand general statistics</locale>
+	</entity>
+
+	<entity id="dashboardgeneralstatistics.brands-count">
+		<locale lang="fr">nombre de marques</locale>
+		<locale lang="en">brands count</locale>
+	</entity>
+
+	<entity id="dashboardgeneralstatistics.used-in-product">
+		<locale lang="fr">associées à un produit</locale>
+		<locale lang="en">used in product</locale>
+	</entity>
+
+	<entity id="dashboardgeneralstatistics.total">
+		<locale lang="fr">total</locale>
+		<locale lang="en">total</locale>
+	</entity>
+
+	<entity id="dashboardgeneralstatistics.created-today">
+		<locale lang="fr">créées aujourd'hui</locale>
+		<locale lang="en">created today</locale>
+	</entity>
+
+	<entity id="dashboardgeneralstatistics.modified-today">
+		<locale lang="fr">modifiées aujourd'hui</locale>
+		<locale lang="en">modified today</locale>
+	</entity>
+</localization>

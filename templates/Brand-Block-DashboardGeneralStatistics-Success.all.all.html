@@ -1,0 +1,24 @@
+<div class="dashboard-widget" tal:omit-tag="refresh" refreshURL="${refreshURL}" title="${title}" icon="${icon}">
+	<tal:block tal:condition="forEdition">
+		<div class="title-bar" ><img src="${icon}" /> ${title}</div>
+		<div class="content-block"><div class="content" change:translate="&modules.dashboard.dashboard.DummyContent;">...</div></div>
+	</tal:block>
+	<tal:block tal:condition="not:forEdition">
+		<table width="100%" tal:condition="widget">
+			<thead>
+				<tr>
+					<th />
+					<th change:translate="&modules.brand.bo.blocks.dashboardgeneralstatistics.Used-in-product;" />
+					<th change:translate="&modules.brand.bo.blocks.dashboardgeneralstatistics.Total;" />
+					<th change:translate="&modules.brand.bo.blocks.dashboardgeneralstatistics.Created-today;" />
+					<th change:translate="&modules.brand.bo.blocks.dashboardgeneralstatistics.Modified-today;" />
+				</tr>
+			</thead>
+			<tbody>
+				<tr tal:repeat="line widget">
+					<td tal:repeat="value line" tal:content="value" />
+				</tr>
+			</tbody>
+		</table>
+	</tal:block>
+</div>
