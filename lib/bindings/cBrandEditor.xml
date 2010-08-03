@@ -1,0 +1,355 @@
+<?xml version="1.0"?>
+<bindings xmlns="http://www.mozilla.org/xbl" xmlns:xbl="http://www.mozilla.org/xbl" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	
+	<!-- URL rewtriting resume section. -->
+	
+	<binding id="cResumeUrlrewritingByWebsiteSection" extends="layout.cDocumentEditor#cResumeSection">
+		<implementation>
+			<method name="setValues">
+				<parameter name="values" />
+				<body><![CDATA[
+					this.clearValues();
+					var propertyValues = values[this.name];
+					if (propertyValues)
+					{
+						var property;
+						for (var i = 0; i < propertyValues.length; i++)
+						{
+							values = propertyValues[i];
+							property = document.createElementNS('http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul', 'xul:cproperty');
+							property.setAttribute("propertyname", 'p_' + i);
+							if (values.class == 'link')
+							{
+								property.setAttribute('class', 'link');
+							}
+							property.setAttribute('label', values.label);					
+							this.appendChild(property);
+							property.setValue(values.href);
+						}
+					}		
+				]]></body>
+			</method>
+
+			<method name="clearValues">
+				<body><![CDATA[
+					this.mPoperties = [];
+					while (this.childNodes.length > 0)
+					{
+						this.removeChild(this.childNodes[this.childNodes.length-1]);
+					}
+				]]></body>
+			</method>
+		</implementation>
+	</binding>
+	
+	<!-- Publication in websites dialog -->
+	
+	<binding id="cPublicationInWebsitesDialog" extends="core.wDialog#wDialog">
+		<resources>
+			<stylesheet src="modules.uixul.cFieldsGroup" />
+			<stylesheet src="modules.brand.cPublicationInWebsitesDialog" />
+		</resources>
+		<implementation>
+			<constructor><![CDATA[
+				wCore.debug("cPublicationInWebsitesDialog.constructor");
+			]]></constructor>
+			
+			<method name="onInitialize">
+				<body><![CDATA[
+					this.resizeTo(window.innerWidth-100, window.innerHeight-100);
+					
+					var result = wCore.executeJSON('brand', 'LoadBrandPublicationInWebsitesInfos', {cmpref: this.parameters.brandId}, null, true);
+					if (result.status === 'OK')
+					{
+						var row;
+						var section;
+						var brand;
+						var contentsNode = document.getAnonymousElementByAttribute(this, 'anonid', 'contents');
+						for (var i = 0; i < result.contents.infos.length; i++)
+						{
+							section = document.createElementNS('http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul', 'section');
+							section.className = 'website';
+							contentsNode.appendChild(section);
+							
+							row = result.contents.infos[i];
+							section.setAttribute('websiteLabel', row.websiteLabel);
+							for (var j = 0; j < row.brands.length; j++)
+							{
+								brand = row.brands[j];
+								section.addRow(brand);
+							}
+						}
+					}
+					else
+					{
+						wToolkit.setNotificationMessage(result.contents.errorMessage, wToolkit.ERROR);
+					}
+				]]></body>
+			</method>
+			
+			<method name="onCancel">
+				<body><![CDATA[
+					this.parameters.module.refreshMainViewDeck();
+					this.controller.closeModalDialog();
+				]]></body>
+			</method>
+		</implementation>
+		<xbl:content>
+			<xul:vbox flex="1">
+				<xul:hbox class="dialog-header">
+					<xul:label value="&amp;modules.brand.bo.dialog.Publication-in-websites;" class="dialog-title" />
+					<xul:spacer flex="1" />
+					<xul:vbox pack="center">
+						<xul:toolbarbutton image="{IconsBase}/small/delete.png" oncommand="onCancel();" tooltiptexts="&amp;modules.uixul.bo.dialog.Cancel;" />
+					</xul:vbox>
+				</xul:hbox>
+				<xul:scrollbox flex="1" orient="vertical">
+					<xul:description>&amp;modules.brand.bo.dialog.Brand-not-in-website;</xul:description>
+					<xul:vbox flex="1" anonid="contents" />
+				</xul:scrollbox>
+			</xul:vbox>
+		</xbl:content>
+	</binding>
+	
+	<binding id="cPublicationInWebsitesSection">
+		<implementation>
+			<constructor><![CDATA[
+				wCore.debug("cPublicationInWebsitesSection.constructor");
+			]]></constructor>
+			
+			<method name="addRow">
+				<parameter name="brand" />
+				<body><![CDATA[
+					var row = document.createElementNS('http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul', 'row');
+					row.className = 'brand-row';
+					
+					var label = document.createElementNS('http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul', 'label');
+					label.setAttribute('value', brand.lang);
+					row.appendChild(label);
+					
+					label = document.createElementNS('http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul', 'label');
+					label.setAttribute('value', brand.plublication);
+					row.appendChild(label);
+					
+					document.getAnonymousElementByAttribute(this, 'anonid', 'rows').appendChild(row);
+				]]></body>
+			</method>
+		</implementation>
+		<xbl:content>
+			<xul:groupbox flex="1">
+				<xul:caption flex="1">
+					<xul:vbox pack="center"><xul:image src="{IconsBase}/small/website.png" /></xul:vbox>
+					<xul:label xbl:inherits="value=websiteLabel" />
+				</xul:caption>
+				<xul:grid flex="1">
+					<xul:columns>
+						<xul:column />
+						<xul:column flex="1" />
+					</xul:columns>
+					<xul:rows anonid="rows">
+						<xul:row class="head-row">
+							<xul:label value="&amp;modules.brand.bo.dialog.Column-lang;" />
+							<xul:label value="&amp;modules.brand.bo.dialog.Column-publication;" />
+			            </xul:row>
+					</xul:rows>
+				</xul:grid>
+			</xul:groupbox>
+		</xbl:content>
+	</binding>
+	
+	<!-- Brand spaces panel. -->
+	
+	<binding id="cSpacesPanel" extends="layout.cDocumentEditor#cDocumentEditorPanelProperties">
+		<implementation>
+			<constructor><![CDATA[
+			]]></constructor>
+
+			<field name="mFieldNames">['spacesJSON']</field>
+			
+			<method name="getInitializeParameters">
+				<body><![CDATA[
+					return {
+						action: 'LoadSpaces',
+						cmpref: this.documentEditor.documentid, 
+						lang : this.documentEditor.documentInfos.vo
+					};
+				]]></body>
+			</method>
+
+			<method name="newSpace">
+				<body><![CDATA[
+					var brandId = this.documentEditor.documentid;
+					var uri = ['brand', 'createSpaceForBrand', 'modules_brand_space', brandId].join(',');
+					openActionUri(uri);
+				]]></body>
+			</method>
+			
+			<property name="modified">
+				<getter><![CDATA[
+					return false;
+				]]></getter>
+				<setter><![CDATA[
+				]]></setter>
+			</property>
+		</implementation>
+		<content>
+			<xul:vbox flex="1">
+				<xul:cmessageinfo anonid="message" />
+				<xul:hbox anonid="action-bar">
+					<xul:button anonid="new_space" oncommand="newSpace()" label="&amp;modules.brand.bo.doceditor.button.New-space;" image="{IconsBase}/small/add.png"/>
+				</xul:hbox>
+				<xul:scrollbox anonid="scrollctrl" flex="1" class="editordatacontainer" orient="vertical">
+					<xul:cfield name="spacesJSON" id="brand_brand_spacesJSON" anonid="field_spacesJSON" fieldtype="namedgridlist" flex="1" />
+					<xul:spacer flex="1" />
+				</xul:scrollbox>
+			</xul:vbox>
+		</content>
+	</binding>
+
+	<binding id="cSpacesGrid" extends="widgets.cGrid#cAbstractGrid">
+		<implementation>
+			<field name="mModule">null</field>
+		
+			<constructor><![CDATA[
+				var pn = this.parentNode;
+				while(pn && pn.tagName != "wmodule")
+				{
+					pn = pn.parentNode;
+				}
+				this.mModule = pn;
+			
+				this.fireEvent('gridInitialised');
+			]]></constructor>
+
+			<method name="getDocumentEditor">
+				<parameter name="datarow" />
+				<body><![CDATA[
+					var pn = this.parentNode;
+					while (pn && pn.localName != 'cdocumenteditor')
+					{
+						pn = pn.parentNode;
+					}
+					return pn;
+				]]></body>
+			</method>
+
+			<method name="execute_edit">
+				<parameter name="rowNode" />
+				<parameter name="rowData" />
+				<body><![CDATA[
+					if (this.disabled) {return;}		
+					var uri = ['brand', 'openDocument', rowData.editorModel, rowData.id].join(',');
+					var fromuri = ['brand', 'openDocument', rowData.brandEditorModel, rowData.brandId, 'spaces'].join(',');
+					openActionUri(uri, fromuri);
+				]]></body>
+			</method>
+			
+			<method name="execute_delete">
+				<parameter name="rowNode" />
+				<parameter name="rowData" />
+				<body><![CDATA[
+					if (confirm("&modules.brand.bo.general.Confirm-delete-space;"))
+					{
+						var me = this;
+						var callBack = function(result) {
+							var dataset = me.buildDataset();
+							if (dataset.length > 0)
+							{						
+								me.updateDataset(dataset.filter(function(row, indice, ds){return row !== rowData}));
+							};
+						};
+						wCore.executeJSON('brand', 'DeleteJSON', {cmpref: rowData.id, lang: Context.W_LANG}, callBack, true);
+					}
+				]]></body>
+			</method>
+			
+			<method name="execute_locate">
+				<parameter name="rowNode" />
+				<parameter name="rowData" />
+				<body><![CDATA[
+					locateDocumentInModule(rowData.topicId, 'website');
+				]]></body>
+			</method>
+			
+			<method name="execute_initDefaultStructure">
+				<parameter name="rowNode" />
+				<parameter name="rowData" />
+				<body><![CDATA[
+					try
+					{
+						var module = this.mModule;
+						var documentId = rowData.id;
+						var topicId = rowData.topicId;
+						var lang = module.getContextLang();
+						var callback = function (pageTemplateName) {
+							return wCore.executeJSON('website', 'InitializeStructure', { cmpref: documentId, moduleName: 'brand', scriptName: 'spaceDefaultStructure', pageTemplateName: pageTemplateName, lang: lang }, null, true);
+						};
+						getController().openModalDialog(this, 'InitializeStructure', { documentId: documentId, pageContainerId: topicId, module: module, callback: callback });
+					}
+					catch (e)
+					{
+						wCore.error('catalog.initDefaultStructure', [], e);
+					}
+				]]></body>
+			</method>
+		</implementation>
+		<content>
+			<xul:grid flex="1" anonid="grid" xbl:inherits="disabled" style="padding-left: 5px;padding-right: 5px;">
+				<xul:columns>
+					<xul:column />
+					<xul:column flex="1" />
+					<xul:column />
+				</xul:columns>
+				<xul:rows>
+					<xul:row class="head" anonid="head-row">
+						<xul:label name="status" value="" />
+						<xul:label name="path" value="&amp;modules.brand.bo.doceditor.spaces.Path-column;" />
+						<xul:label name="actionrow" value="&amp;modules.brand.bo.doceditor.spaces.Actions-column;" />
+					</xul:row>
+				</xul:rows>
+			</xul:grid>
+			<xul:row anonid="template-row" class="document orderable" hidden="true">
+				<xul:cpublicationcell value="" />
+				<xul:label value="" />
+				<xul:toolbar class="actions">
+					<xul:toolbarbutton action="edit" image="{IconsBase}/small/edit.png" tooltiptext="&amp;modules.uixul.bo.actions.Edit;" />
+					<xul:toolbarbutton action="locate" image="{IconsBase}/small/topic.png" tooltiptext="&amp;modules.brand.bo.actions.Locate-related-topic;" />
+					<xul:toolbarbutton action="initDefaultStructure" image="{IconsBase}/small/add.png" tooltiptext="&amp;modules.brand.bo.actions.Generate-default-structure;" />
+					<xul:toolbarbutton action="delete" image="{IconsBase}/small/delete.png" tooltiptext="&amp;modules.uixul.bo.actions.Delete;" />
+				</xul:toolbar>
+			</xul:row>
+		</content>
+	</binding>
+	
+	<!-- Root structure selection. -->
+	
+	<binding id="cSelectStructureRootDialog" extends="core.wDialog#cRessourceDialog">
+		<implementation>
+			<method name="handleSelected">
+				<parameter name="list" />
+				<body><![CDATA[
+					var selectedItems = list.getSelectedItems();
+					if (selectedItems.length == 0)
+					{
+						return;
+					}
+					var selectedItem = selectedItems[0];
+					wCore.debug(wCore.dump(selectedItem));
+					if (selectedItem.id)
+					{
+						var originalModule = this.parameters.originalModule
+						var documentId = selectedItem.id;
+						var topicId = selectedItem.id;
+						var lang = originalModule.getContextLang();
+						var callback = function (pageTemplateName) {
+							return wCore.executeJSON('website', 'InitializeStructure', { cmpref: documentId, moduleName: 'brand', scriptName: 'globalDefaultStructure', pageTemplateName: pageTemplateName, lang: lang }, null, true);
+						};
+						this.controller.closeModalDialog(true);
+						setTimeout(function() { getController().openModalDialog(originalModule, 'InitializeStructure', { documentId: documentId, pageContainerId: topicId, module: originalModule, callback: callback }); }, 100);
+					}
+				]]></body>
+			</method>
+		</implementation>
+	</binding>
+</bindings>

@@ -4,29 +4,50 @@
 		<locale lang="fr">statistiques générales sur les marques</locale>
 		<locale lang="en">brand general statistics</locale>
 	</entity>
-
 	<entity id="dashboardgeneralstatistics.brands-count">
 		<locale lang="fr">nombre de marques</locale>
 		<locale lang="en">brands count</locale>
 	</entity>
-
 	<entity id="dashboardgeneralstatistics.used-in-product">
 		<locale lang="fr">associées à un produit</locale>
 		<locale lang="en">used in product</locale>
 	</entity>
-
 	<entity id="dashboardgeneralstatistics.total">
 		<locale lang="fr">total</locale>
 		<locale lang="en">total</locale>
 	</entity>
-
 	<entity id="dashboardgeneralstatistics.created-today">
 		<locale lang="fr">créées aujourd'hui</locale>
 		<locale lang="en">created today</locale>
 	</entity>
-
 	<entity id="dashboardgeneralstatistics.modified-today">
 		<locale lang="fr">modifiées aujourd'hui</locale>
 		<locale lang="en">modified today</locale>
+	</entity>
+	
+	<entity id="brand.title">
+		<locale lang="fr">détail d'une marque</locale>
+		<locale lang="en">brand detail</locale>
+	</entity>
+	<entity id="brand.showshareblock">
+		<locale lang="fr">activer le partage de liens</locale>
+	</entity>
+	<entity id="brand.showshareblock-help">
+		<locale lang="fr">activer ou non les icônes de paratage de liens.</locale>
+	</entity>
+	
+	<entity id="brandlist.title">
+		<locale lang="fr">liste des marques</locale>
+		<locale lang="en">brands list</locale>
+	</entity>
+	<entity id="brandlist.paginated">
+		<locale lang="fr">liste paginée</locale>
+	</entity>
+	<entity id="brandlist.paginated-help">
+		<locale lang="fr">Si cette option n'est pas activée, toutes les marques seront affichées sur une unique page. Si par contre elle est activée, il y aura une page par lettre qui sera elle-même paginée si besoin.</locale>
+	</entity>
+	<entity id="brandlist.itemsperpage">
+		<locale lang="fr">nombre d'éléments par page</locale>
+		<locale lang="en">number of elements per page</locale>
 	</entity>
 </localization>

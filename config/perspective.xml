@@ -5,9 +5,10 @@
 			<contextactions>
 				<contextaction name="edit"/>
 				<contextaction name="openTreeNodeOrder" />
-				<groupactions name="create_">
+				<groupactions name="createRoot_">
 					<contextaction name="createFolder" />
 					<contextaction name="createBrand" />
+					<contextaction name="initDefaultStructure" />
 				</groupactions>
 				<contextaction name="openFolder" />
 			</contextactions>
@@ -52,6 +53,8 @@
 				<contextaction name="delete" />
 				<contextaction name="deactivated"/>
 				<contextaction name="reactivate"/>			
+				<contextaction name="compileBrand"/>
+				<contextaction name="showPublicationInWebsites" />			
 			</contextactions>
 		</model>
 	</models>
@@ -69,8 +72,12 @@
 		<action name="reactivate" permission="ReActivate" icon="reactivate" label="&amp;modules.uixul.bo.actions.ReActivate;"/>
 		<action name="openTreeNodeOrder" single="true" permission="Order" icon="sort" label="&amp;modules.uixul.bo.actions.Set-children-order;" />
 		<action name="openFolder" icon="open-folder" label="&amp;modules.uixul.bo.actions.OpenFolder;" />
-		<action name="create_" single="true" icon="add" actions="createFolder,createBrand" />
-		<action name="createBrand" single="true" permission="Insert_brand" group="create_" label="&amp;modules.brand.bo.actions.Create-Brand;" />
-		<action name="createFolder" single="true" permission="Insert_folder" group="create_" label="&amp;modules.uixul.bo.actions.Create-folder;" />
+		<action name="create_" single="true" icon="add" />
+		<action name="createRoot_" single="true" icon="add" />
+		<action name="createBrand" single="true" permission="Insert_brand" label="&amp;modules.brand.bo.actions.Create-Brand;" />
+		<action name="createFolder" single="true" permission="Insert_folder" label="&amp;modules.uixul.bo.actions.Create-folder;" />
+		<action name="initDefaultStructure" single="true" permission="InitDefaultStructure" />
+		<action name="compileBrand" single="true" icon="admin" />
+		<action name="showPublicationInWebsites" single="true" icon="status-detail" />
 	</actions>
 </perspective>

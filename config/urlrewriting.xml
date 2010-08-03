@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlrewriting>
+	<rules>	
+		<rule documentModel="brand" viewMode="detail" lang="fr">
+			<template>marques/$label,$id</template>
+		</rule>
+		<rule documentModel="brand" viewMode="detail">
+			<template>brands/$label,$id</template>
+		</rule>
+	</rules>
+</urlrewriting>

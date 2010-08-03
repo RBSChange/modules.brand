@@ -1,44 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <localization>
-  <entity id="document-name">
-    <locale lang="fr">marque</locale>
-    <locale lang="en">brand</locale>
-  </entity>
-  <entity id="edition-form-title">
-    <locale lang="fr">propriétés de la marque</locale>
-    <locale lang="en">brand properties</locale>
-  </entity>
-  
-  <entity id="label">
-    <locale lang="fr">libellé</locale>
-    <locale lang="en">label</locale>
-  </entity>
-  <entity id="label-help">
-    <locale lang="fr">libellé</locale>
-    <locale lang="en">label-help</locale>
-  </entity>
-  <entity id="visual">
-    <locale lang="fr">logo</locale>
-    <locale lang="en">visual</locale>
-  </entity>
-  <entity id="visual-help">
-    <locale lang="fr">logo de la marque : image à sélectionner dans la Mediathèque.</locale>
-    <locale lang="en">brand's logo; select image from the Media module.</locale>
-  </entity>
-  <entity id="description">
-    <locale lang="fr">description</locale>
-    <locale lang="en">description</locale>
-  </entity>
-  <entity id="description-help">
-    <locale lang="fr">description</locale>
-    <locale lang="en">description</locale>
-  </entity>
-  <entity id="websiteUrl">
-    <locale lang="fr">adresse du site internet</locale>
-    <locale lang="en">website address</locale>
-  </entity>
-  <entity id="websiteUrl-help">
-    <locale lang="fr">adresse du site internet de la marque : selon les modèles de mise en page, un lien pourra être créé sur le logo de la marque pour se rendre sur son site internet.</locale>
-    <locale lang="en">brand's website address; depending on the templates, a link to the brand's website may be created on the brand's logo.</locale>
-  </entity>
+	<entity id="document-name">
+		<locale lang="fr">marque</locale>
+		<locale lang="en">brand</locale>
+	</entity>
+	<entity id="label">
+		<locale lang="fr">libellé</locale>
+		<locale lang="en">label</locale>
+	</entity>
+	<entity id="visual">
+		<locale lang="fr">logo</locale>
+		<locale lang="en">visual</locale>
+	</entity>
+	<entity id="visual-help">
+		<locale lang="fr">logo de la marque : image à sélectionner dans la Mediathèque.</locale>
+		<locale lang="en">brand's logo; select image from the Media module.</locale>
+	</entity>
+	<entity id="description">
+		<locale lang="fr">description</locale>
+		<locale lang="en">description</locale>
+	</entity>
+	<entity id="websiteUrl">
+		<locale lang="fr">adresse du site internet</locale>
+		<locale lang="en">website address</locale>
+	</entity>
+	<entity id="websiteUrl-help">
+		<locale lang="fr">adresse du site internet de la marque : selon les modèles de mise en page, un lien pourra être créé sur le logo de la marque pour se rendre sur son site internet.</locale>
+		<locale lang="en">brand's website address; depending on the templates, a link to the brand's website may be created on the brand's logo.</locale>
+	</entity>
 </localization>

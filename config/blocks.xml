@@ -1,4 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <blocks>
-	<block type="modules_brand_DashboardGeneralStatistics" display="" icon="statistics" dashboard="true" label="&amp;modules.brand.bo.blocks.DashboardGeneralStatistics.Title;" />
+	<block type="modules_brand_DashboardGeneralStatistics" icon="statistics" dashboard="true"
+		label="&amp;modules.brand.bo.blocks.DashboardGeneralStatistics.Title;" />
+	<block type="modules_brand_brand" icon="brand" label="&amp;modules.brand.bo.blocks.Brand.Title;">
+		<parameters>
+			<parameter name="showShareBlock" type="Boolean" default-value="true" />
+		</parameters>
+	</block>
+	<block type="modules_brand_brandList" icon="list-block" label="&amp;modules.brand.bo.blocks.BrandList.Title;">
+		<parameters>
+			<parameter name="paginated" type="Boolean" default-value="true" />
+			<parameter name="itemsPerPage" type="Integer" default-value="20" hidehelp="true" />
+		</parameters>
+		<xul>
+			<javascript>
+				<constructor><![CDATA[
+					var fields = this.getFields();
+					var me = this;
+					fields['paginated'].addEventListener('fieldChanged', function(event) {me.onDisplaysortmenuChange(event)}, true);
+				]]></constructor>
+				<method name="onDisplaysortmenuChange">
+					<body><![CDATA[
+						var fields = this.getFields();
+						this.getElementByAnonId('itemsPerPage_cnt').collapsed = !(fields['paginated'].value == 'true');
+					]]></body>
+				</method>
+			</javascript>
+		</xul>
+	</block>
+	<block type="modules_brand_brandProducts" icon="list-block" label="&amp;modules.brand.bo.blocks.BrandProducts.Title;">
+		<parameters>
+			<parameter name="brand" type="modules_brand/brand" />
+			<parameter name="displayMode" type="String" list-id="modules_catalog/displaymode" default-value="list" />
+			<parameter name="displayaddtocart" type="Boolean" default-value="true" />
+			<parameter name="showaddtofavorite" type="Boolean" default-value="true" />
+			<parameter name="activatequantityselection" type="Boolean" default-value="true" />
+			<parameter name="displayavailability" type="Boolean" default-value="true" />
+			<parameter name="displayratingaverage" type="Boolean" default-value="true" />
+			<parameter name="showshareblock" type="Boolean" default-value="false" hidden="true" />
+			<parameter name="displayproductdescription" type="Boolean" default-value="true" />
+			<parameter name="displayproductpicto" type="Boolean" default-value="false" />
+			<parameter name="displaysortmenu" type="Boolean" default-value="false" hidden="true" />
+		</parameters>
+	</block>
 </blocks>

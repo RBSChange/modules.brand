@@ -1,0 +1,18 @@
+cdocumenteditor#edt_brand_brand cresumesection[sectionname="urlrewriting"]{
+	-moz-binding: url(binding:modules.brand.cBrandEditor#cResumeUrlrewritingByWebsiteSection);
+}
+cdocumenteditor#edt_brand_brand cspacespanel{
+	-moz-binding: url(binding:modules.brand.cBrandEditor#cSpacesPanel);
+}
+gridlist.spacesJSON{
+	-moz-binding: url(binding:modules.brand.cBrandEditor#cSpacesGrid);
+}
+wdialog[template="publicationInWebsitesDialog"]{
+	-moz-binding: url(binding:modules.brand.cBrandEditor#cPublicationInWebsitesDialog);
+}
+wdialog[template="publicationInWebsitesDialog"] section.website{
+	-moz-binding: url(binding:modules.brand.cBrandEditor#cPublicationInWebsitesSection);
+}
+wdialog[template="selectStructureRoot"]{
+	-moz-binding: url(binding:modules.brand.cBrandEditor#cSelectStructureRootDialog);
+}

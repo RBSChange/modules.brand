@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<localization extend="modules.catalog.bo.blocks.productlistbase">
+	<entity id="title">
+		<locale lang="fr">produits de la marque</locale>
+		<locale lang="en">brand products</locale>
+	</entity>
+	<entity id="brand">
+		<locale lang="fr">marque</locale>
+		<locale lang="en">brand</locale>
+	</entity>
+	<entity id="brand-help">
+		<locale lang="fr">pour afficher les produits d'une marque donnée, sélectionnez-là ici. Laissez ce champ vide pour sélectionner automatiquement la marque en fonction du contexte.</locale>
+	</entity>
+</localization>

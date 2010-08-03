@@ -12,4 +12,57 @@
 			this.createDocumentEditor('modules_brand_folder', listWidget.getSelectedItems()[0].id);
 		]]></body>
 	</action>
+	<action name="compileBrand">
+		<parameter name="listWidget" />
+		<body><![CDATA[
+			var document = listWidget.getSelectedItems()[0];
+			this.executeJSON("CompileBrand", {cmpref: document.id, lang:this.getContextLang()});
+		]]></body>
+	</action>
+	<action name="createSpaceForBrand">
+		<parameter name="params" />
+		<body><![CDATA[
+			this.createDocumentEditor('modules_brand_space', params[3]);
+		]]></body>
+	</action>
+	<action name="onCompileBrandSuccess">
+		<parameter name="listWidget" />
+		<body><![CDATA[
+			this.refreshMainViewDeck();
+		]]></body>
+	</action>
+	<action name="locateTopic">
+		<parameter name="listWidget" />
+		<body><![CDATA[
+			// TODO
+		]]></body>
+	</action>
+	<action name="showPublicationInWebsites">
+		<parameter name="listWidget" />
+		<body><![CDATA[
+			var document = listWidget.getSelectedItems()[0];
+			try
+			{
+				this.getController().openModalDialog(this, 'publicationInWebsitesDialog', {brandId: document.id, module: this});
+			}
+			catch (e)
+			{
+				wCore.error('publicationInWebsitesDialog', [], e);
+				this.refreshMainViewDeck();
+			}
+		]]></body>
+	</action>
+	<action name="initDefaultStructure">
+		<parameter name="listWidget" />
+		<body><![CDATA[
+			try
+			{
+				getController().openModalDialog(this, 'selectStructureRoot', { module: 'website', allow: 'modules_website_website,modules_website_topic,modules_website_systemtopic', single: true, originalModule: this });
+			}
+			catch (e)
+			{
+				wCore.error('catalog.initDefaultStructure', [], e);
+			}
+		]]></body>
+	</action>
 </actions>

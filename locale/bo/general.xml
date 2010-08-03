@@ -4,19 +4,31 @@
 		<locale lang="fr">marques</locale>
 		<locale lang="en">brands</locale>
 	</entity>
-
 	<entity id="tree-root-name">
 		<locale lang="fr">marques</locale>
 		<locale lang="en">brands</locale>
 	</entity>
-
 	<entity id="system-folder-name">
 		<locale lang="fr">marques</locale>
 		<locale lang="en">brands</locale>
 	</entity>
-	
 	<entity id="column.websiteURL">
 		<locale lang="fr">adresse du site internet de la marque</locale>
 		<locale lang="en">brand's website URL</locale>
+	</entity>
+	<entity id="Confirm-delete-space">
+		<locale lang="fr">Êtes-vous sûr de vouloir supprimer cet espace ?</locale>
+	</entity>
+	<entity id="invalid-website-or-topic">
+		<locale lang="fr">Le conteneur doit être un site web ou une rubrique.</locale>
+	</entity>
+	<entity id="some-pages-already-initialized">
+		<locale lang="fr">Certaines pages de la structure ont déjà été initialisées.</locale>
+	</entity>
+	<entity id="invalid-space">
+		<locale lang="fr">Le conteneur doit être un espace marque.</locale>
+	</entity>
+	<entity id="space-already-contains-pages">
+		<locale lang="fr">La rubrique associée à cet espace marque contient déjà des pages.</locale>
 	</entity>
 </localization>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<localization>
+	<entity id="brand-block">
+		<locale lang="fr">détail d'une marque</locale>
+		<locale lang="en">brand detail</locale>
+	</entity>
+	<entity id="brandlist-block">
+		<locale lang="fr">liste des marques</locale>
+		<locale lang="en">brands list</locale>
+	</entity>
+</localization>

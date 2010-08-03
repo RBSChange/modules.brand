@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<localization>
+	<entity id="document-name">
+		<locale lang="fr">marque compilée</locale>
+		<locale lang="en">compiled brand</locale>
+	</entity>
+	<entity id="publication.no-product-published-in-website">
+		<locale lang="fr">aucun produit publié sur ce site n'est associé à cette marque</locale>
+	</entity>
+	<entity id="publication.brand-not-published">
+		<locale lang="fr">la marque associée n'est pas publiée</locale>
+	</entity>
+</localization>

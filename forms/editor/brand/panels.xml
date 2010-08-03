@@ -4,6 +4,14 @@
 	<panel name="properties" />
 	<panel name="publication" />
 	<panel name="localization" />
+	<panel name="redirect" />
 	<panel name="history" />
 	<panel name="create" />
+	<xul>
+		<javascript>
+			<constructor><![CDATA[
+				this.addTab('spaces', '&modules.brand.bo.doceditor.tab.Spaces;', 'brand-space');
+			]]></constructor>
+		</javascript>
+	</xul>
 </panels>

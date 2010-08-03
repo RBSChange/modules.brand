@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<panel>
+	<section labeli18n="modules.uixul.bo.doceditor.fieldsgroup.Title">
+		<field name="mountParentId" type="document" allow="[modules_website_website],[modules_website_topic]" moduleselector="website" required="true"
+			labeli18n="modules.brand.document.space.Mount-parent" shorthelp="&amp;modules.brand.document.space.Mount-parent-help;" />
+	</section>
+</panel>

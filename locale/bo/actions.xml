@@ -5,8 +5,28 @@
 		<locale lang="en">create</locale>
 		<locale lang="de">neu</locale>
 	</entity>
-	<entity id="Create-Brand">
+	<entity id="createRoot_">
+		<locale lang="fr">créer</locale>
+		<locale lang="en">create</locale>
+		<locale lang="de">neu</locale>
+	</entity>
+	<entity id="create-Brand">
 		<locale lang="fr">créer une marque</locale>
 		<locale lang="en">create brand</locale>
+	</entity>
+	<entity id="compileBrand">
+		<locale lang="fr">Actualiser</locale>
+	</entity>
+	<entity id="locate-related-topic">
+		<locale lang="fr">localiser la rubrique associée dans le module Sites et pages</locale>
+	</entity>
+	<entity id="showPublicationInWebsites">
+		<locale lang="fr">publication dans les sites</locale>
+	</entity>
+	<entity id="generate-default-structure">
+		<locale lang="fr">générer la structure par défaut</locale>
+	</entity>
+	<entity id="initdefaultstructure">
+		<locale lang="fr">créer la rubrique de l'annuaire de marques dans un site</locale>
 	</entity>
 </localization>

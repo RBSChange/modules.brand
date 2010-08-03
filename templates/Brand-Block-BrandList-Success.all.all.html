@@ -1,0 +1,21 @@
+<h2 change:h="" change:translate="modules.brand.frontoffice.All-brands"></h2>
+
+<ul class="letters-menu">
+	<li tal:repeat="letter firstLetters">
+		<a tal:condition="not: configuration/getpaginated" class="link" href="#letter-${letter}">${letter}</a>
+		<a tal:condition="configuration/getpaginated" class="link" change:link="tag ctx_brand_brandlist; brandParam[letter] letter">${letter}</a>
+	</li>
+</ul>
+
+<tal:block tal:repeat="brandsForLetter brandsByFirstLetter" class="">
+	<h3 id="letter-${repeat/brandsForLetter/key}">${repeat/brandsForLetter/key}</h3>
+	<tal:block tal:condition="brandsForLetter">
+		<ul class="brands-for-letter">
+			<li tal:repeat="brand brandsForLetter">
+				<a change:link="document brand">${brand/getLabelAsHtml}</a>
+			</li>
+		</ul>
+		<tal:block tal:condition="php: brandsForLetter instanceof paginator_Paginator" change:paginator="brandsForLetter" />
+	</tal:block>
+	<p tal:condition="not: brandsForLetter" change:translate="modules.brand.frontoffice.No-brand-for-this-letter"></p>
+</tal:block>

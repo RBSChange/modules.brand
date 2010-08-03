@@ -1,0 +1,12 @@
+.letters-menu {
+	list-style: none inside;
+	text-align: center;
+	margin-bottom: 25px;;
+}
+.letters-menu li {
+	display: inline;
+	margin: 5px;
+}
+.brands-for-letter {
+	margin-bottom: 20px
+}

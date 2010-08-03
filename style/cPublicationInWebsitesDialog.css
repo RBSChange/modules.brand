@@ -1,0 +1,18 @@
+groupbox{
+	border: 1px solid #bbb !important;
+	-moz-border-radius: 5px !important;
+	background-color: #f9f9f9 !important;
+}
+groupbox caption{
+	padding: 0 !important;	
+	margin: 0 !important;	
+}
+scrollbox{
+	overflow: auto;
+}
+.dialog-header{
+	background: url(/changeicons/small/status-detail.png) transparent center  left no-repeat!important;
+}
+.head-row{
+	font-weight: bold;
+}
