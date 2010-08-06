@@ -41,6 +41,9 @@
 			<parameter name="displayproductdescription" type="Boolean" default-value="true" />
 			<parameter name="displayproductpicto" type="Boolean" default-value="false" />
 			<parameter name="displaysortmenu" type="Boolean" default-value="false" hidden="true" />
+			
+			<parameter name="useCache" type="Boolean" default-value="false" />
+			<parameter name="displayCustomerPrice" type="Boolean" default-value="true" />
 		</parameters>
 	</block>
 </blocks>
