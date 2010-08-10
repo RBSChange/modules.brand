@@ -175,9 +175,8 @@ class brand_BrandService extends f_persistentdocument_DocumentService
 			try 
 			{
 				$this->tm->beginTransaction();
-				foreach ($brandIds as $brandId) 
+				foreach (brand_BrandService::getInstance()->createQuery()->add(Restrictions::in('id', $brandIds))->find() as $brand) 
 				{
-					$brand = $this->getDocumentInstance($brandId, 'modules_brand/brand');
 					$brand->getDocumentService()->updateCompiledProperty($brand, false);
 				}
 				$this->tm->commit();
