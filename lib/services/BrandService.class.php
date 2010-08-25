@@ -241,7 +241,9 @@ class brand_BrandService extends f_persistentdocument_DocumentService
 			
 			$urlData = array();
 			
-			$query = brand_CompiledbrandService::getInstance()->createQuery()->add(Restrictions::eq('brand.id', $document->getId()))
+			$query = brand_CompiledbrandService::getInstance()->createQuery()
+				->add(Restrictions::eq('lang', $lang))
+				->add(Restrictions::eq('brand.id', $document->getId()))
 				->setProjection(Projections::property('websiteId'), Projections::property('publicationstatus'));
 			foreach ($query->find() as $row)
 			{
