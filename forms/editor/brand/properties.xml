@@ -2,7 +2,7 @@
 <panel>
 	<section labeli18n="modules.uixul.bo.doceditor.fieldsgroup.Title">
 		<field name="label" hidehelp="true" />
-		<field name="visual" />
+		<field name="visual" allowfile="true" mediafoldername="Inbox" />
 		<field name="description" hidehelp="true" />
 		<field name="websiteUrl" />
 	</section>
