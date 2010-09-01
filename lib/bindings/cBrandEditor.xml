@@ -57,7 +57,7 @@
 			
 			<method name="onInitialize">
 				<body><![CDATA[
-					this.resizeTo(window.innerWidth-100, window.innerHeight-100);
+					this.autoResize(window.innerWidth-100, window.innerHeight-100);
 					
 					var result = wCore.executeJSON('brand', 'LoadBrandPublicationInWebsitesInfos', {cmpref: this.parameters.brandId}, null, true);
 					if (result.status === 'OK')
