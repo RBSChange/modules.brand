@@ -76,7 +76,7 @@ class brand_SpaceService extends f_persistentdocument_DocumentService
 	 */
 	public function getInfosByBrand($brand)
 	{
-		$infos = array();
+		$infos = array('spaces' => array());
 		foreach ($this->getByBrand($brand) as $space)
 		{
 			$infos['spaces'][] = array(
@@ -92,16 +92,6 @@ class brand_SpaceService extends f_persistentdocument_DocumentService
 		$infos['spacesJSON'][] = JsonService::getInstance()->encode($infos['spaces']);
 		return $infos;
 	}
-	
-	/**
-	 * @param brand_persistentdocument_space $document
-	 * @param Integer $parentNodeId Parent node ID where to save the document (optionnal => can be null !).
-	 * @return void
-	 */
-//	protected function preSave($document, $parentNodeId)
-//	{	
-//		parent::preSave($document, $parentNodeId);
-//	}
 
 	/**
 	 * @param brand_persistentdocument_space $document
@@ -120,16 +110,6 @@ class brand_SpaceService extends f_persistentdocument_DocumentService
 		
 		$this->handleMountParent($document);
 	}
-
-	/**
-	 * @param brand_persistentdocument_space $document
-	 * @param Integer $parentNodeId Parent node ID where to save the document.
-	 * @return void
-	 */
-//	protected function postInsert($document, $parentNodeId)
-//	{
-//		parent::postInsert($document, $parentNodeId);
-//	}
 
 	/**
 	 * @param brand_persistentdocument_space $document
@@ -231,38 +211,6 @@ class brand_SpaceService extends f_persistentdocument_DocumentService
 
 	/**
 	 * @param brand_persistentdocument_space $document
-	 * @return void
-	 */
-//	protected function preDelete($document)
-//	{
-//	}
-
-	/**
-	 * @param brand_persistentdocument_space $document
-	 * @return void
-	 */
-//	protected function preDeleteLocalized($document)
-//	{
-//	}
-
-	/**
-	 * @param brand_persistentdocument_space $document
-	 * @return void
-	 */
-//	protected function postDelete($document)
-//	{
-//	}
-
-	/**
-	 * @param brand_persistentdocument_space $document
-	 * @return void
-	 */
-//	protected function postDeleteLocalized($document)
-//	{
-//	}
-
-	/**
-	 * @param brand_persistentdocument_space $document
 	 * @return boolean true if the document is publishable, false if it is not.
 	 */
 	public function isPublishable($document)
@@ -315,104 +263,6 @@ class brand_SpaceService extends f_persistentdocument_DocumentService
 	}
 
 	/**
-	 * Correction document is available via $args['correction'].
-	 * @param f_persistentdocument_PersistentDocument $document
-	 * @param Array<String=>mixed> $args
-	 */
-//	protected function onCorrectionActivated($document, $args)
-//	{
-//	}
-
-	/**
-	 * @param brand_persistentdocument_space $document
-	 * @param String $tag
-	 * @return void
-	 */
-//	public function tagAdded($document, $tag)
-//	{
-//	}
-
-	/**
-	 * @param brand_persistentdocument_space $document
-	 * @param String $tag
-	 * @return void
-	 */
-//	public function tagRemoved($document, $tag)
-//	{
-//	}
-
-	/**
-	 * @param brand_persistentdocument_space $fromDocument
-	 * @param f_persistentdocument_PersistentDocument $toDocument
-	 * @param String $tag
-	 * @return void
-	 */
-//	public function tagMovedFrom($fromDocument, $toDocument, $tag)
-//	{
-//	}
-
-	/**
-	 * @param f_persistentdocument_PersistentDocument $fromDocument
-	 * @param brand_persistentdocument_space $toDocument
-	 * @param String $tag
-	 * @return void
-	 */
-//	public function tagMovedTo($fromDocument, $toDocument, $tag)
-//	{
-//	}
-
-	/**
-	 * Called before the moveToOperation starts. The method is executed INSIDE a
-	 * transaction.
-	 *
-	 * @param f_persistentdocument_PersistentDocument $document
-	 * @param Integer $destId
-	 */
-//	protected function onMoveToStart($document, $destId)
-//	{
-//	}
-
-	/**
-	 * @param brand_persistentdocument_space $document
-	 * @param Integer $destId
-	 * @return void
-	 */
-//	protected function onDocumentMoved($document, $destId)
-//	{
-//	}
-
-	/**
-	 * this method is call before saving the duplicate document.
-	 * If this method not override in the document service, the document isn't duplicable.
-	 * An IllegalOperationException is so launched.
-	 *
-	 * @param brand_persistentdocument_space $newDocument
-	 * @param brand_persistentdocument_space $originalDocument
-	 * @param Integer $parentNodeId
-	 *
-	 * @throws IllegalOperationException
-	 */
-//	protected function preDuplicate($newDocument, $originalDocument, $parentNodeId)
-//	{
-//		throw new IllegalOperationException('This document cannot be duplicated.');
-//	}
-
-	/**
-	 * this method is call after saving the duplicate document.
-	 * $newDocument has an id affected.
-	 * Traitment of the children of $originalDocument.
-	 *
-	 * @param brand_persistentdocument_space $newDocument
-	 * @param brand_persistentdocument_space $originalDocument
-	 * @param Integer $parentNodeId
-	 *
-	 * @throws IllegalOperationException
-	 */
-//	protected function postDuplicate($newDocument, $originalDocument, $parentNodeId)
-//	{
-//	}
-
-	/**
 	 * Returns the URL of the document if has no URL Rewriting rule.
 	 *
 	 * @param brand_persistentdocument_space $document
@@ -424,42 +274,4 @@ class brand_SpaceService extends f_persistentdocument_DocumentService
 	{
 		return LinkHelper::getDocumentUrl($document->getBrand(), $lang, $parameters);
 	}
-
-	/**
-	 * @param brand_persistentdocument_space $document
-	 * @return integer | null
-	 */
-//	public function getWebsiteId($document)
-//	{
-//	}
-
-	/**
-	 * @param brand_persistentdocument_space $document
-	 * @return website_persistentdocument_page | null
-	 */
-//	public function getDisplayPage($document)
-//	{
-//	}
-
-	/**
-	 * @param brand_persistentdocument_space $document
-	 * @param string $forModuleName
-	 * @param array $allowedSections
-	 * @return array
-	 */
-//	public function getResume($document, $forModuleName, $allowedSections = null)
-//	{
-//		$resume = parent::getResume($document, $forModuleName, $allowedSections);
-//		return $resume;
-//	}
-
-	/**
-	 * @param brand_persistentdocument_space $document
-	 * @param string $bockName
-	 * @return array with entries 'module' and 'template'. 
-	 */
-//	public function getSolrserachResultItemTemplate($document, $bockName)
-//	{
-//		return array('module' => 'brand', 'template' => 'Brand-Inc-SpaceResultDetail');
-//	}
 }

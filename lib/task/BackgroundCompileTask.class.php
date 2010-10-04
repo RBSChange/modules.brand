@@ -14,7 +14,12 @@ class brand_BackgroundCompileTask extends task_SimpleSystemTask
 		$batchPath = 'modules/brand/lib/bin/batchCompile.php';
 		foreach (array_chunk($ids, 10) as $chunk)
 		{
-			f_util_System::execHTTPScript($batchPath, $chunk);
+			$result = f_util_System::execHTTPScript($batchPath, $chunk);
+			// Log fatal errors...
+			if ($result != '1')
+			{
+				Framework::error(__METHOD__ . ' ' . $batchPath . ' unexpected result: "' . $result . '"');
+			}
 		}	
 	}
 }
