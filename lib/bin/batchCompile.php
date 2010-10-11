@@ -9,6 +9,7 @@ else
 {
 	$brandIdArray = $_POST['argv'];
 }
+
 Controller::newInstance("controller_ChangeController");
 $tm = f_persistentdocument_TransactionManager::getInstance();
 try
@@ -26,3 +27,4 @@ catch (Exception $e)
 {
 	$tm->rollBack($e);
 }
+echo 'OK';
