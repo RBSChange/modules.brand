@@ -31,12 +31,6 @@
 			this.refreshMainViewDeck();
 		]]></body>
 	</action>
-	<action name="locateTopic">
-		<parameter name="listWidget" />
-		<body><![CDATA[
-			// TODO
-		]]></body>
-	</action>
 	<action name="showPublicationInWebsites">
 		<parameter name="listWidget" />
 		<body><![CDATA[

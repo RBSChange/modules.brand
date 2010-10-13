@@ -6,21 +6,16 @@
 class brand_persistentdocument_compiledbrand extends brand_persistentdocument_compiledbrandbase implements indexer_IndexableDocument
 {
 	/**
-	 * Get the indexable document
-	 *
 	 * @return indexer_IndexedDocument
 	 */
 	public function getIndexedDocument()
 	{
 		$indexedDoc = new indexer_IndexedDocument();
-		// TODO : set the different properties you want in you indexedDocument :
-		// - please verify that id, documentModel, label and lang are correct according your requirements
-		// - please set text value.
 		$indexedDoc->setId($this->getId());
 		$indexedDoc->setDocumentModel('modules_brand/compiledbrand');
 		$indexedDoc->setLabel($this->getLabel());
 		$indexedDoc->setLang($this->getLang());
-		$indexedDoc->setText(null); // TODO : please fill text property
+		$indexedDoc->setText(f_util_StringUtils::htmlToText($this->getBrand()->getDescription()));
 		return $indexedDoc;
 	}
 	
