@@ -335,15 +335,14 @@
 						return;
 					}
 					var selectedItem = selectedItems[0];
-					wCore.debug(wCore.dump(selectedItem));
 					if (selectedItem.id)
 					{
 						var originalModule = this.parameters.originalModule
 						var documentId = selectedItem.id;
 						var topicId = selectedItem.id;
 						var lang = originalModule.getContextLang();
-						var callback = function (pageTemplateName) {
-							return wCore.executeJSON('website', 'InitializeStructure', { cmpref: documentId, moduleName: 'brand', scriptName: 'globalDefaultStructure', pageTemplateName: pageTemplateName, lang: lang }, null, true);
+						var callback = function (attributes) {
+							return wCore.executeJSON('website', 'InitializeStructure', { cmpref: documentId, moduleName: 'brand', scriptName: 'globalDefaultStructure', attributes: attributes, lang: lang }, null, true);
 						};
 						this.controller.closeModalDialog(true);
 						setTimeout(function() { getController().openModalDialog(originalModule, 'InitializeStructure', { documentId: documentId, pageContainerId: topicId, module: originalModule, callback: callback }); }, 100);

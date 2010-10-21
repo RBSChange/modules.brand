@@ -4,8 +4,10 @@
 	<binding fileName="modules/brand/persistentdocument/import/brand_binding.xml" />
 	<binding fileName="modules/website/persistentdocument/import/website_binding.xml" />
 	
-	<documentRef>
-		<topic template="webfactory/tplTwo" label="Annuaire des marques">
+	<attribute name="template" default="true">webfactory/tplTwo</attribute>
+	
+	<documentRef byDocumentId-attr="" type-attr="">
+		<topic label="Annuaire des marques">
 			<page label="Annuaire des marques" isIndexPage="true" indexingstatus="false" navigationVisibility="hidden">
 				<tag name="contextual_website_website_modules_brand_brandlist" />
 				<changecontent for="content-block">

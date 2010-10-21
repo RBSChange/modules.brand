@@ -4,6 +4,8 @@
 	<binding fileName="modules/brand/persistentdocument/import/brand_binding.xml" />
 	<binding fileName="modules/website/persistentdocument/import/website_binding.xml" />
 	
+	<attribute name="template" default="true">webfactory/tplTwo</attribute>
+	
 	<rootfolder module="media">
 		<folder label="Médias liés aux exemples de marques">
 			<media path="modules/brand/setup/sample/nike_logo.jpg" label="Logo Nike" id="media1" />
@@ -11,32 +13,18 @@
 		</folder>
 	</rootfolder>
 	
+	<attribute name="brandDescription" default="true">
+		<![CDATA[<p>Sed sapien risus, rhoncus ac, vehicula ac, vulputate ut, nibh. Praesent nisi nulla, bibendum dapibus, tincidunt sed, dapibus ac, orci. Duis vulputate. Morbi nunc. Donec libero nulla, suscipit eget, hendrerit sit amet, sollicitudin et, libero. Integer metus arcu, malesuada et, vestibulum vel, accumsan in, mi. Curabitur molestie. Vestibulum ut purus. Duis vestibulum orci condimentum diam. Cras congue pharetra mauris! Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer mollis tortor. Donec velit mauris, facilisis vel, venenatis id, congue eget; nisi. Nullam dictum laoreet ligula. Pellentesque magna. In lobortis, eros a elementum dictum, est neque sodales quam, in tempor mi leo rhoncus nisi.</p>]]>
+	</attribute>
 	<rootfolder module="brand">
 		<folder byLabel="Exemples de marques">
-			<brand label="Nike" visual-refid="media1" description="&lt;p&gt;
-Sed sapien risus, rhoncus ac, vehicula ac, vulputate ut, nibh. Praesent nisi nulla, bibendum dapibus, tincidunt sed, dapibus ac, orci. Duis vulputate. Morbi nunc. Donec libero nulla, suscipit eget, hendrerit sit amet, sollicitudin et, libero. Integer metus arcu, malesuada et, vestibulum vel, accumsan in, mi. Curabitur molestie. Vestibulum ut purus. Duis vestibulum orci condimentum diam. Cras congue pharetra mauris! Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer mollis tortor. Donec velit mauris, facilisis vel, venenatis id, congue eget; nisi. Nullam dictum laoreet ligula. Pellentesque magna. In lobortis, eros a elementum dictum, est neque sodales quam, in tempor mi leo rhoncus nisi.
-&lt;/p&gt;" websiteUrl="http://www.nike.com" id="brand1" />
-			<brand label="Adidas" visual-refid="media2" description="&lt;p&gt;
-Sed sapien risus, rhoncus ac, vehicula ac, vulputate ut, nibh. Praesent nisi nulla, bibendum dapibus, tincidunt sed, dapibus ac, orci. Duis vulputate. Morbi nunc. Donec libero nulla, suscipit eget, hendrerit sit amet, sollicitudin et, libero. Integer metus arcu, malesuada et, vestibulum vel, accumsan in, mi. Curabitur molestie. Vestibulum ut purus. Duis vestibulum orci condimentum diam. Cras congue pharetra mauris! Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer mollis tortor. Donec velit mauris, facilisis vel, venenatis id, congue eget; nisi. Nullam dictum laoreet ligula. Pellentesque magna. In lobortis, eros a elementum dictum, est neque sodales quam, in tempor mi leo rhoncus nisi.
-&lt;/p&gt;" websiteUrl="http://www.adidas.com" id="brand2" />
+			<brand label="Nike" visual-refid="media1" description-attr="brandDescription" id="brand1" />
+			<brand label="Adidas" visual-refid="media2" description-attr="brandDescription" websiteUrl="http://www.adidas.com" id="brand2" />
 		</folder>	
 	</rootfolder>
 	
-	<website byTag="default_modules_website_default-website" template="webfactory/tplTwo">
-		<topic label="Annuaire des marques">
-			<page label="Annuaire des marques" isIndexPage="true" indexingstatus="false" navigationVisibility="hidden">
-				<tag name="contextual_website_website_modules_brand_brandlist" />
-				<changecontent for="content-block">
-					<changeblock type="modules_brand_brandList" />
-				</changecontent>
-			</page>	
-			<page label="Détail d'une marque" indexingstatus="false" navigationVisibility="hidden">
-				<tag name="contextual_website_website_modules_brand_brand" />
-				<changecontent for="content-block">
-					<changeblock type="modules_brand_brand" />
-					<changeblock type="modules_brand_brandProducts" />
-				</changecontent>
-			</page>	
-		</topic>
+	<website byTag="default_modules_website_default-website">
+		<execute method="setDocumentIdAttribute" />
+		<binding fileName="modules/brand/setup/globalDefaultStructure.xml" />
 	</website>
 </script>
