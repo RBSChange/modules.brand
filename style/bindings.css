@@ -13,6 +13,3 @@ wdialog[template="publicationInWebsitesDialog"]{
 wdialog[template="publicationInWebsitesDialog"] section.website{
 	-moz-binding: url(binding:modules.brand.cBrandEditor#cPublicationInWebsitesSection);
 }
-wdialog[template="selectStructureRoot"]{
-	-moz-binding: url(binding:modules.brand.cBrandEditor#cSelectStructureRootDialog);
-}

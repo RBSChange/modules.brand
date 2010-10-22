@@ -51,7 +51,15 @@
 		<body><![CDATA[
 			try
 			{
-				getController().openModalDialog(this, 'selectStructureRoot', { module: 'website', allow: 'modules_website_website,modules_website_topic,modules_website_systemtopic', single: true, originalModule: this });
+				var params = { 
+					module: 'website', 
+					allow: 'modules_website_website,modules_website_topic,modules_website_systemtopic', 
+					single: true, 
+					originalModule: this, 
+					scriptModuleName: 'brand', 
+					scriptName: 'globalDefaultStructure'
+				};
+				getController().openModalDialog(this, 'selectStructureRoot', params);
 			}
 			catch (e)
 			{

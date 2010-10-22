@@ -282,8 +282,8 @@
 						var documentId = rowData.id;
 						var topicId = rowData.topicId;
 						var lang = module.getContextLang();
-						var callback = function (pageTemplateName) {
-							return wCore.executeJSON('website', 'InitializeStructure', { cmpref: documentId, moduleName: 'brand', scriptName: 'spaceDefaultStructure', pageTemplateName: pageTemplateName, lang: lang }, null, true);
+						var callback = function (attributes) {
+							return wCore.executeJSON('website', 'InitializeStructure', { cmpref: documentId, moduleName: 'brand', scriptName: 'spaceDefaultStructure', attributes: attributs, lang: lang }, null, true);
 						};
 						getController().openModalDialog(this, 'InitializeStructure', { documentId: documentId, pageContainerId: topicId, module: module, callback: callback });
 					}
@@ -320,35 +320,5 @@
 				</xul:toolbar>
 			</xul:row>
 		</content>
-	</binding>
-	
-	<!-- Root structure selection. -->
-	
-	<binding id="cSelectStructureRootDialog" extends="core.wDialog#cRessourceDialog">
-		<implementation>
-			<method name="handleSelected">
-				<parameter name="list" />
-				<body><![CDATA[
-					var selectedItems = list.getSelectedItems();
-					if (selectedItems.length == 0)
-					{
-						return;
-					}
-					var selectedItem = selectedItems[0];
-					if (selectedItem.id)
-					{
-						var originalModule = this.parameters.originalModule
-						var documentId = selectedItem.id;
-						var topicId = selectedItem.id;
-						var lang = originalModule.getContextLang();
-						var callback = function (attributes) {
-							return wCore.executeJSON('website', 'InitializeStructure', { cmpref: documentId, moduleName: 'brand', scriptName: 'globalDefaultStructure', attributes: attributes, lang: lang }, null, true);
-						};
-						this.controller.closeModalDialog(true);
-						setTimeout(function() { getController().openModalDialog(originalModule, 'InitializeStructure', { documentId: documentId, pageContainerId: topicId, module: originalModule, callback: callback }); }, 100);
-					}
-				]]></body>
-			</method>
-		</implementation>
 	</binding>
 </bindings>
