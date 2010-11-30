@@ -1,10 +1,6 @@
 treechildren::-moz-tree-image(modules_brand_brand){
 	list-style-image: url(/changeicons/small/brand.png) ;
 }
-
-treechildren::-moz-tree-image(modules_brand_compiledbrand){
-	list-style-image: url(/changeicons/small/document.png);
-}
 treechildren::-moz-tree-image(modules_brand_space){
 	list-style-image: url(/changeicons/small/brand-space.png);
 }

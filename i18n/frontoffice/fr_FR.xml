@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.brand.frontoffice" lcid="fr_FR">
+  <key id="description">description</key>
+  <key id="product-count">nombre de produits</key>
+  <key id="website-url">site web</key>
+  <key id="all-brands">liste des marques</key>
+  <key id="no-brand-for-this-letter">Il n'y a aucune marque commençant par cette lettre.</key>
+  <key id="brand-products-title">produits de marque {brand}</key>
+</i18n>

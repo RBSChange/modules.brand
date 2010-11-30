@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.brand.bo.blocks.brand" lcid="fr_FR">
+  <key id="title">détail d'une marque</key>
+  <key id="showshareblock">activer le partage de liens</key>
+  <key id="showshareblock-help">activer ou non les icônes de paratage de liens.</key>
+</i18n>

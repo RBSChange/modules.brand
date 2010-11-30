@@ -41,29 +41,80 @@ class brand_BrandService extends f_persistentdocument_DocumentService
 	}
 	
 	/**
+	 * @param brand_persistentdocument_brand $brand
+	 * @param website_persistentdocument_website $website
+	 * @return boolean
+	 */
+	public function isPublishedInWebsite($brand, $website)
+	{
+		$query = $this->createQuery()
+			->add(Restrictions::published())
+			->add(Restrictions::eq('id', $brand->getId()))
+			->setProjection(Projections::count('id', 'count'));
+			
+		$query->createPropertyCriteria('brandId', 'modules_catalog/compiledproduct')
+				->add(Restrictions::published())
+				->add(Restrictions::eq('websiteId', $website->getId()));
+		
+		$result = $query->find();
+		return (count($result) && $result[0]['count'] > 0);
+	}
+
+	/**
+	 * @param website_persistentdocument_website $website
+	 * @return integer
+	 */
+	public function getPublishedCountByWebsite($website)
+	{
+		$query = $this->createQuery()
+			->add(Restrictions::published())
+			->setProjection(Projections::distinctCount('id', 'count'));
+			
+		$query->createPropertyCriteria('brandId', 'modules_catalog/compiledproduct')
+				->add(Restrictions::published())
+				->add(Restrictions::eq('websiteId', $website->getId()));
+
+		$result = $query->find();
+		return (count($result)) ? intval($result[0]['count']): 0;
+	}
+		
+	/**
 	 * @param website_persistentdocument_website $website
 	 * @param string $firstLetter
+	 * @return brand_persistentdocument_brand[]
 	 */
 	public function getPublishedByWebsite($website, $firstLetter = null)
 	{
-		$query = $this->createQuery()->addOrder(Order::asc('document_label'));
+		$query = $this->createQuery()
+				->addOrder(Order::asc('document_label'))
+				->add(Restrictions::published());
+				
 		if ($firstLetter !== null)
 		{
 			$query->add(Restrictions::eq('firstLetter', $firstLetter));
 		}
-		$query->createCriteria('compiledbrand', 'modules_brand/compiledbrand')->add(Restrictions::published())
-			->add(Restrictions::eq('websiteId', $website->getId()));
+						
+		$query->createPropertyCriteria('brandId', 'modules_catalog/compiledproduct')
+				->add(Restrictions::published())
+				->add(Restrictions::eq('websiteId', $website->getId()));
+	
 		return $query->find(); 
 	}
 	
 	/**
 	 * @param website_persistentdocument_website $website
+	 * @return string[]
 	 */
 	public function getFirstLettersByWebsite($website)
 	{
-		$query = $this->createQuery()->addOrder(Order::asc('document_label'))->setProjection(Projections::property('firstLetter'));
-		$query->createCriteria('compiledbrand', 'modules_brand/compiledbrand')->add(Restrictions::published())
-			->add(Restrictions::eq('websiteId', $website->getId()));
+		$query = $this->createQuery()->addOrder(Order::asc('document_label'))
+			->add(Restrictions::published())
+			->setProjection(Projections::groupProperty('firstLetter', 'firstLetter'));
+			
+		$query->createPropertyCriteria('brandId', 'modules_catalog/compiledproduct')
+				->add(Restrictions::published())
+				->add(Restrictions::eq('websiteId', $website->getId()));
+				
 		return $query->findColumn('firstLetter'); 
 	}
 	
@@ -72,54 +123,28 @@ class brand_BrandService extends f_persistentdocument_DocumentService
 	 * @param catalog_persistentdocument_shop $shop
 	 * @param integer $offset
 	 * @param integer $maxresults
-	 * @return catalog_persistentdocument_product
+	 * @return catalog_persistentdocument_product[]
 	 */
 	public function getProductsByBrandAndShop($brand, $shop, $offset = 0, $maxresults = null)
 	{
-		$query = catalog_CompiledproductService::getInstance()->createQuery();
-		$query->add(Restrictions::published())->add(Restrictions::eq('indexed', true))
-			->add(Restrictions::eq('brandId', $brand->getId()))->add(Restrictions::eq('shopId', $shop->getId()))
-			->setProjection(Projections::property('product', 'product'));
+		$query = catalog_ProductService::getInstance()->createQuery()
+					->add(Restrictions::eq('brand', $brand));
+					
+		$query->createCriteria('compiledproduct')
+				->add(Restrictions::published())
+				->add(Restrictions::eq('brandId', $brand->getId()))
+				->add(Restrictions::eq('shopId', $shop->getId()));
+			
 		if ($maxresults !== null)
 		{
+			$query->addOrder(Order::asc('document_label'));
 			$query->setFirstResult($offset);
 			$query->setMaxResults($maxresults);
 		}
-		return $query->findColumn('product');
+		return $query->find();
 	}
 	
-	/**
-	 * @return integer[]
-	 */
-	public final function getAllBrandIdsToCompile()
-	{
-		return $this->createQuery()->setProjection(Projections::property('id', 'id'))->findColumn('id');
-	}
 	
-	/**
-	 * @return integer[]
-	 */
-	public final function getBrandIdsToCompile()
-	{
-		return $this->createQuery()->add(Restrictions::eq('compiled', false))->setProjection(Projections::property('id', 'id'))->findColumn('id');
-	}
-	
-	/**
-	 * @param brand_persistentdocument_brand $document
-	 * @param String $oldPublicationStatus
-	 * @param array<"cause" => String, "modifiedPropertyNames" => array, "oldPropertyValues" => array> $params
-	 * @return void
-	 */
-	protected function publicationStatusChanged($document, $oldPublicationStatus, $params)
-	{
-		if (!isset($params['cause']) || $params['cause'] != 'delete')
-		{
-			if ($document->isPublished() || $oldPublicationStatus == 'PUBLICATED')
-			{	
-				$this->updateCompiledProperty($document, false);
-			}
-		}
-	}
 	
 	/**
 	 * @param brand_persistentdocument_brand $document
@@ -127,36 +152,39 @@ class brand_BrandService extends f_persistentdocument_DocumentService
 	 */
 	protected function preSave($document, $parentNodeId)
 	{
-		parent::preSave($document, $parentNodeId);
-		
 		$firstLetter = f_util_StringUtils::strtoupper(f_util_StringUtils::substr($document->getLabel(), 0, 1));
 		$document->setFirstLetter($firstLetter);
+		if ($document->getPublicationstatus() === f_persistentdocument_PersistentDocument::STATUS_PUBLISHED 
+			&& $document->isPropertyModified('label'))
+		{
+			catalog_ProductService::getInstance()->setNeedCompileForBrand($document);
+		}
 	}
+	
+	
+	
 	
 	/**
 	 * @param brand_persistentdocument_brand $document
+	 * @param String $oldPublicationStatus
+	 * @param array $params
+	 * @return void
 	 */
-	protected function preDelete($document)
+	protected function publicationStatusChanged($document, $oldPublicationStatus, $params)
 	{
-		brand_CompiledbrandService::getInstance()->deleteForBrand($document);
+		if ($document->getPublicationstatus() === f_persistentdocument_PersistentDocument::STATUS_PUBLISHED
+			|| $oldPublicationStatus === f_persistentdocument_PersistentDocument::STATUS_PUBLISHED)
+		{
+			catalog_ProductService::getInstance()->setNeedCompileForBrand($document);
+		}
 	}
-
-	/**
-	 * @param brand_persistentdocument_brand $document
-	 */
-	protected function postDeleteLocalized($document)
-	{
-		$this->updateCompiledProperty($document, false);
-	}
-	
+		
 	/**
 	 * @param brand_persistentdocument_brand $document
 	 * @param Integer $parentNodeId Parent node ID where to save the document.
 	 */
 	protected function postSave($document, $parentNodeId)
 	{
-		$this->updateCompiledProperty($document, false);
-		
 		// Synchronize space label.
 		foreach (brand_SpaceService::getInstance()->getByBrand($document) as $space)
 		{
@@ -165,59 +193,6 @@ class brand_BrandService extends f_persistentdocument_DocumentService
 		}
 	}
 	
-	/**
-	 * @param integer[] $brandIds
-	 */
-	public function setNeedCompile($brandIds)
-	{
-		if (f_util_ArrayUtils::isNotEmpty($brandIds))
-		{
-			try 
-			{
-				$this->tm->beginTransaction();
-				foreach (brand_BrandService::getInstance()->createQuery()->add(Restrictions::in('id', $brandIds))->find() as $brand) 
-				{
-					$brand->getDocumentService()->updateCompiledProperty($brand, false);
-				}
-				$this->tm->commit();
-			} 
-			catch (Exception $e)
-			{
-				$this->tm->rollBack($e);
-			}
-		}
-	}
-	
-	/**
-	 * @param brand_persistentdocument_brand $document
-	 * @param boolean $compiled
-	 */
-	protected function updateCompiledProperty($document, $compiled)
-	{
-		if ($document->getCompiled() != $compiled)
-		{
-			if ($document->isModified())
-			{
-				Framework::warn(__METHOD__ . $document->__toString() . ", $compiled : Is not possible on modified brand");
-				return;		
-			}
-			if (Framework::isInfoEnabled())
-			{
-				Framework::info(__METHOD__ . ' ' . $document->__toString() . ($compiled ? ' is compiled':' to recompile'));
-			}
-			$document->setCompiled($compiled);
-			$this->pp->updateDocument($document);
-		}
-	}
-	
-	/**
-	 * @param integer $brandId
-	 */
-	public function setCompiled($brandId)
-	{
-		$brand = $this->getDocumentInstance($brandId, 'modules_brand/brand');
-		$brand->getDocumentService()->updateCompiledProperty($brand, true);
-	}
 	
 	/**
 	 * @param brand_persistentdocument_brand $document
@@ -229,8 +204,6 @@ class brand_BrandService extends f_persistentdocument_DocumentService
 	{
 		unset($allowedSections['urlrewriting']);
 		$data = parent::getResume($document, $forModuleName, $allowedSections);
-		
-		$data['properties']['compiled'] = f_Locale::translateUI('&framework.boolean.' . ($document->getCompiled() ? 'True' : 'False') . ';');
 			
 		$rc = RequestContext::getInstance();
 		$contextlang = $rc->getLang();
@@ -241,17 +214,20 @@ class brand_BrandService extends f_persistentdocument_DocumentService
 			
 			$urlData = array();
 			
-			$query = brand_CompiledbrandService::getInstance()->createQuery()
-				->add(Restrictions::eq('lang', $lang))
-				->add(Restrictions::eq('brand.id', $document->getId()))
-				->setProjection(Projections::property('websiteId'), Projections::property('publicationstatus'));
+			$query = $this->createQuery()
+						->add(Restrictions::eq('id', $document->getId()));
+			
+			$query->createPropertyCriteria('brandId', 'modules_catalog/compiledproduct')
+					->add(Restrictions::eq('lang', $lang))
+					->setProjection(Projections::groupProperty('websiteId', 'websiteId'));
+					
 			foreach ($query->find() as $row)
 			{
 				$website = DocumentHelper::getDocumentInstance($row['websiteId'], 'modules_website/website');
 				$urlData[] = array(
 					'label' => f_Locale::translateUI('&modules.brand.bo.doceditor.Url-for-website;', array('website' => $website->getLabel())), 
 					'href' => str_replace('&amp;', '&', $this->generateUrlForWebsite($document, $website, $lang, array(), false)),
-					'class' => ($website->isPublished() && $row['publicationstatus'] == 'PUBLICATED') ? 'link' : ''
+					'class' => ($website->isPublished()) ? 'link' : ''
 				);
 			}
 			$data['urlrewriting'] = $urlData;
@@ -321,41 +297,35 @@ class brand_BrandService extends f_persistentdocument_DocumentService
 	 */
 	public function getPublicationInWebsitesInfos($brand)
 	{
-		$cbs = brand_CompiledbrandService::getInstance();
-		if (!$brand->getCompiled())
-		{
-			$cbs->generateForBrand($brand);
-		}
-		
+		$query = $this->createQuery()
+			->add(Restrictions::published())
+			->add(Restrictions::eq('id', $brand->getId()))
+			->setProjection(Projections::groupProperty('id', 'brandId'));
+			
+		$query->createPropertyCriteria('brandId', 'modules_catalog/compiledproduct')
+				->add(Restrictions::published())
+				->setProjection(Projections::groupProperty('websiteId', 'websiteId'),
+					Projections::groupProperty('lang', 'lang')
+				);
 		$compiledByWebsiteId = array();
-		$query = $cbs->createQuery()->add(Restrictions::eq('brand', $brand))->addOrder(Order::asc('websiteId'));
-		foreach ($query->find() as $compiledBrand)
+		foreach ($query->find() as $row)
 		{
-			$websiteId = $compiledBrand->getWebsiteId();
-			if (!isset($compiledByWebsiteId[$websiteId]))
-			{
-				$compiledByWebsiteId[$websiteId] = array();
-			}
-			$compiledByWebsiteId[$websiteId][] = $compiledBrand;
+			Framework::info(var_export($row, true));
+			$brand = DocumentHelper::getDocumentInstance($row['brandId'], 'modules_brand/brand');
+			$compiledByWebsiteId[$row['websiteId']][] = array($brand, $row['lang']);
 		}
 		
 		$result = array();		
-		foreach ($compiledByWebsiteId as $websiteId => $compiledBrands)
+		foreach ($compiledByWebsiteId as $websiteId => $brandDatas)
 		{
 			$websiteInfos = array();
 			$website = DocumentHelper::getDocumentInstance($websiteId, 'modules_website/website');
-			$websiteInfos['websiteLabel'] = $website->getLabel();		
-			
+			$websiteInfos['websiteLabel'] = $website->getLabel();				
 			$websiteInfos['brands'] = array();
-			foreach ($compiledBrands as $compiledBrand)
+			foreach ($brandDatas as $data)
 			{
-				$lang = $compiledBrand->getLang();
-				$publication = f_Locale::translateUI(DocumentHelper::getPublicationstatusLocaleKey($compiledBrand));
-				if ($compiledBrand->getPublicationStatus() === 'ACTIVE' && $compiledBrand->hasMeta('ActPubStatInf'.$lang))
-				{
-					$publication .= ' (' . f_Locale::translateUI($compiledBrand->getMeta('ActPubStatInf'.$lang)) . ')';
-				}
-				
+				list($brand, $lang) = $data;
+				$publication = f_Locale::translateUI(DocumentHelper::getPublicationstatusLocaleKey($brand));			
 				$websiteInfos['brands'][] = array(
 					'lang' => $lang,
 					'plublication' => $publication
@@ -365,4 +335,6 @@ class brand_BrandService extends f_persistentdocument_DocumentService
 		}
 		return $result;
 	}
+
+
 }

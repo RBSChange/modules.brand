@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.brand.bo.blocks.brandproducts" lcid="en_GB">
+  <include id="m.catalog.bo.blocks.productlistbase"/>
+  <key id="title">brand products</key>
+  <key id="brand">brand</key>
+</i18n>

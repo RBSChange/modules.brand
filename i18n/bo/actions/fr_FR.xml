@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.brand.bo.actions" lcid="fr_FR">
+  <key id="create_">créer</key>
+  <key id="createroot_">créer</key>
+  <key id="create-brand">créer une marque</key>
+  <key id="locate-related-topic">localiser la rubrique associée dans le module Sites et pages</key>
+  <key id="showpublicationinwebsites">publication dans les sites</key>
+  <key id="generate-default-structure">générer la structure par défaut</key>
+  <key id="initdefaultstructure">créer la rubrique de l'annuaire de marques dans un site</key>
+</i18n>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.brand.bo.blocks.brandproducts" lcid="fr_FR">
+  <include id="m.catalog.bo.blocks.productlistbase"/>
+  <key id="title">produits de la marque</key>
+  <key id="brand">marque</key>
+  <key id="brand-help">pour afficher les produits d'une marque donnée, sélectionnez-là ici. Laissez ce champ vide pour sélectionner automatiquement la marque en fonction du contexte.</key>
+</i18n>

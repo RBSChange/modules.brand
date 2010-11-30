@@ -2,6 +2,5 @@
 <script>
   <binding fileName="modules/generic/persistentdocument/import/generic_binding.xml"/>
   <binding name="brand" className="brand_BrandScriptDocumentElement"/>
-  <binding name="compiledbrand" className="brand_CompiledbrandScriptDocumentElement"/>
   <binding name="space" className="brand_SpaceScriptDocumentElement"/>
 </script>

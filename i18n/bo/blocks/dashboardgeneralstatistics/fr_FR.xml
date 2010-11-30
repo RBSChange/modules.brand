@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.brand.bo.blocks.dashboardgeneralstatistics" lcid="fr_FR">
+  <key id="title">statistiques générales sur les marques</key>
+  <key id="brands-count">nombre de marques</key>
+  <key id="used-in-product">associées à un produit</key>
+  <key id="total">total</key>
+  <key id="created-today">créées aujourd'hui</key>
+  <key id="modified-today">modifiées aujourd'hui</key>
+</i18n>

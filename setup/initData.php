@@ -7,7 +7,6 @@ class brand_Setup extends object_InitDataSetup
 	public function install()
 	{
 		// $this->executeModuleScript('init.xml');
-		$this->addBackGroundCompileTask();
 	}
 
 	/**
@@ -20,16 +19,5 @@ class brand_Setup extends object_InitDataSetup
 		// Example:
 		// return array('modules_website', 'modules_users');
 		return array();
-	}
-	
-	/**
-	 * @return void
-	 */
-	private function addBackGroundCompileTask()
-	{
-		$task = task_PlannedtaskService::getInstance()->getNewDocumentInstance();
-		$task->setSystemtaskclassname('brand_BackgroundCompileTask');
-		$task->setLabel('brand_BackgroundCompileTask');
-		$task->save(ModuleService::getInstance()->getSystemFolderId('task', 'brand'));
 	}
 }

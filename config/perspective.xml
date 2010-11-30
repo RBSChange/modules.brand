@@ -53,7 +53,6 @@
 				<contextaction name="delete" />
 				<contextaction name="deactivated"/>
 				<contextaction name="reactivate"/>			
-				<contextaction name="compileBrand"/>
 				<contextaction name="showPublicationInWebsites" />			
 			</contextactions>
 		</model>
@@ -77,7 +76,6 @@
 		<action name="createBrand" single="true" permission="Insert_brand" label="&amp;modules.brand.bo.actions.Create-Brand;" />
 		<action name="createFolder" single="true" permission="Insert_folder" label="&amp;modules.uixul.bo.actions.Create-folder;" />
 		<action name="initDefaultStructure" single="true" permission="InitDefaultStructure" />
-		<action name="compileBrand" single="true" icon="admin" />
 		<action name="showPublicationInWebsites" single="true" icon="status-detail" />
 	</actions>
 </perspective>

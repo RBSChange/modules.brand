@@ -5,7 +5,6 @@
 		<property name="label" labeli18n="modules.uixul.bo.doceditor.property.Label" />
 		<property name="author" labeli18n="modules.uixul.bo.doceditor.property.Author" />
 		<property name="creationdate" labeli18n="modules.uixul.bo.doceditor.property.Creationdate" />
-		<property name="compiled" class="action" type="compileBrand" labeli18n="modules.brand.bo.doceditor.property.Compiled" />
 	</section>				
 	<section name="publication" linkedtab="publication" labeli18n="modules.uixul.bo.doceditor.section.Publication" 
 		image="{IconsBase}/small/status.png">

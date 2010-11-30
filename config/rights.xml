@@ -6,7 +6,6 @@
 		</document>
 		<document name="folder" />
 		<document name="brand" />
-		<document name="compiledbrand" />
 		<document name="space" />
 	</actions>
 	<roles>

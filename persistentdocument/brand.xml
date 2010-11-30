@@ -7,7 +7,6 @@
 		<add name="visual" type="modules_media/media" />
 		<add name="description" type="XHTMLFragment" localized="true" />
 		<add name="websiteUrl" type="String" localized="true" />
-		<add name="compiled" type="Boolean" default-value="false" />
 		<add name="firstLetter" type="String" />
 	</properties>
 	<statuses default="ACTIVE" />

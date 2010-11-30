@@ -216,14 +216,15 @@ class brand_SpaceService extends f_persistentdocument_DocumentService
 	public function isPublishable($document)
 	{
 		$result = parent::isPublishable($document);
-		
-		$compiledBrand = brand_CompiledbrandService::getInstance()->getByBrandAndWebsiteId($document->getBrand(), $document->getWebsiteId());
-		if ($compiledBrand === null || !$compiledBrand->isPublished())
+		if ($result)
 		{
-			$this->setActivePublicationStatusInfo($document, '&modules.brand.document.space.publication.brand-not-published-in-website;');
-			return false;
+			$website = DocumentHelper::getDocumentInstance($document->getWebsiteId());
+			if (!brand_BrandService::getInstance()->isPublishedInWebsite($document->getBrand(), $website))
+			{
+				$this->setActivePublicationStatusInfo($document, '&modules.brand.document.space.publication.brand-not-published-in-website;');
+				$result = false;
+			}
 		}
-		
 		return $result;
 	}
 
