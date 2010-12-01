@@ -9,6 +9,7 @@
 	</block>
 	<block type="modules_brand_brandList" icon="list-block" label="&amp;modules.brand.bo.blocks.BrandList.Title;">
 		<parameters>
+			<parameter name="topshelf" type="modules_catalog/topshelf" />
 			<parameter name="paginated" type="Boolean" default-value="true" />
 			<parameter name="itemsPerPage" type="Integer" default-value="20" hidehelp="true" />
 		</parameters>

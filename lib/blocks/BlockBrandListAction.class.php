@@ -19,7 +19,7 @@ class brand_BlockBrandListAction extends website_BlockAction
 		if ($this->getConfiguration()->getPaginated())
 		{
 			$letter = $request->getParameter('letter', 'A');
-			$brands = $bs->getPublishedByWebsite($website, $letter);
+			$brands = $bs->getPublishedByWebsite($website, $letter, $this->getConfiguration()->getTopshelf());
 			$maxresults = $this->getConfiguration()->getItemsPerPage();
 			$page = $request->getParameter(paginator_Paginator::PAGEINDEX_PARAMETER_NAME, 1);
 			$paginator = new paginator_Paginator('brand', $page, $brands, $maxresults);
@@ -28,7 +28,7 @@ class brand_BlockBrandListAction extends website_BlockAction
 		}
 		else
 		{
-			$brands = $bs->getPublishedByWebsite($website);
+			$brands = $bs->getPublishedByWebsite($website, null, $this->getConfiguration()->getTopshelf());
 			foreach ($brands as $brand)
 			{
 				$firstLetter = $brand->getFirstLetter();

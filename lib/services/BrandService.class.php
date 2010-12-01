@@ -59,7 +59,25 @@ class brand_BrandService extends f_persistentdocument_DocumentService
 		$result = $query->find();
 		return (count($result) && $result[0]['count'] > 0);
 	}
-
+	
+	/**
+	 * @param string $codeReference
+	 * @return brand_persistentdocument_brand
+	 */
+	public function getByCodeReference($codeReference)
+	{
+		return $this->createQuery()->add(Restrictions::eq('codeReference', $codeReference))->findUnique();
+	}
+	
+	/**
+	 * @param string[] $codeReferences
+	 * @return brand_persistentdocument_brand[]
+	 */
+	public function getByCodeReferences($codeReferences)
+	{
+		return $this->createQuery()->add(Restrictions::in('codeReference', $codeReferences))->find();
+	}
+	
 	/**
 	 * @param website_persistentdocument_website $website
 	 * @return integer
@@ -83,7 +101,7 @@ class brand_BrandService extends f_persistentdocument_DocumentService
 	 * @param string $firstLetter
 	 * @return brand_persistentdocument_brand[]
 	 */
-	public function getPublishedByWebsite($website, $firstLetter = null)
+	public function getPublishedByWebsite($website, $firstLetter = null, $topShelf = null)
 	{
 		$query = $this->createQuery()
 				->addOrder(Order::asc('document_label'))
@@ -97,7 +115,7 @@ class brand_BrandService extends f_persistentdocument_DocumentService
 		$query->createPropertyCriteria('brandId', 'modules_catalog/compiledproduct')
 				->add(Restrictions::published())
 				->add(Restrictions::eq('websiteId', $website->getId()));
-	
+					
 		return $query->find(); 
 	}
 	
@@ -105,7 +123,7 @@ class brand_BrandService extends f_persistentdocument_DocumentService
 	 * @param website_persistentdocument_website $website
 	 * @return string[]
 	 */
-	public function getFirstLettersByWebsite($website)
+	public function getFirstLettersByWebsite($website, $topShelf = null)
 	{
 		$query = $this->createQuery()->addOrder(Order::asc('document_label'))
 			->add(Restrictions::published())
