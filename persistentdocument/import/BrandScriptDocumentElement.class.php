@@ -8,4 +8,9 @@ class brand_BrandScriptDocumentElement extends import_ScriptDocumentElement
     {
     	return brand_BrandService::getInstance()->getNewDocumentInstance();    
     }
+    
+	protected function getParentInTree()
+	{
+		return null;
+	}
 }
