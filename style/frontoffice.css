@@ -10,3 +10,6 @@
 .modules-brand .brands-for-letter {
 	margin-bottom: 20px
 }
+.modules-brand ul.brands-for-letter {
+	list-style-type: none;
+}
