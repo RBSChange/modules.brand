@@ -264,15 +264,15 @@ class brand_SpaceService extends f_persistentdocument_DocumentService
 	}
 
 	/**
-	 * Returns the URL of the document if has no URL Rewriting rule.
-	 *
+	 * @param website_UrlRewritingService $urlRewritingService
 	 * @param brand_persistentdocument_space $document
+	 * @param website_persistentdocument_website $website
 	 * @param string $lang
 	 * @param array $parameters
-	 * @return string
+	 * @return f_web_Link | null
 	 */
-	public function generateUrl($document, $lang, $parameters)
+	public function getWebLink($urlRewritingService, $document, $website, $lang, $parameters)
 	{
-		return LinkHelper::getDocumentUrl($document->getBrand(), $lang, $parameters);
-	}
+		return $urlRewritingService->getDocumentLinkForWebsite($document->getBrand(), $website, $lang, $parameters);
+	}	
 }
