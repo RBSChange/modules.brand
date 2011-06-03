@@ -283,7 +283,7 @@
 						var topicId = rowData.topicId;
 						var lang = module.getContextLang();
 						var callback = function (attributes) {
-							return wCore.executeJSON('website', 'InitializeStructure', { cmpref: documentId, moduleName: 'brand', scriptName: 'spaceDefaultStructure', attributes: attributs, lang: lang }, null, true);
+							return wCore.executeJSON('website', 'InitializeStructure', { cmpref: documentId, moduleName: 'brand', scriptName: 'spaceDefaultStructure', attributes: attributes, lang: lang }, null, true);
 						};
 						getController().openModalDialog(this, 'InitializeStructure', { documentId: documentId, pageContainerId: topicId, module: module, callback: callback });
 					}
