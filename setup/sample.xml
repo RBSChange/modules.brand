@@ -3,9 +3,7 @@
 	<binding fileName="modules/media/persistentdocument/import/media_binding.xml" />
 	<binding fileName="modules/brand/persistentdocument/import/brand_binding.xml" />
 	<binding fileName="modules/website/persistentdocument/import/website_binding.xml" />
-	
-	<attribute name="template" default="true">webfactory/tplTwo</attribute>
-	
+
 	<rootfolder module="media">
 		<folder label="Médias liés aux exemples de marques">
 			<media path="modules/brand/setup/sample/nike_logo.jpg" label="Logo Nike" id="media1" />

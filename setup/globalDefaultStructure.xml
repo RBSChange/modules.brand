@@ -3,9 +3,7 @@
 	<binding fileName="modules/media/persistentdocument/import/media_binding.xml" />
 	<binding fileName="modules/brand/persistentdocument/import/brand_binding.xml" />
 	<binding fileName="modules/website/persistentdocument/import/website_binding.xml" />
-	
-	<attribute name="template" default="true">webfactory/tplTwo</attribute>
-	
+
 	<documentRef byDocumentId-attr="" type-attr="">
 		<topic label="Annuaire des marques">
 			<page label="Annuaire des marques" isIndexPage="true" indexingstatus="false" navigationVisibility="hidden">
