@@ -1,21 +1,30 @@
-<h2 change:h="" change:translate="modules.brand.frontoffice.All-brands"></h2>
+<h1 change:h="">${trans:m.brand.frontoffice.all-brands,ucf}</h1>
 
-<ul class="letters-menu">
+<ul class="inline-list">
 	<li tal:repeat="letter firstLetters">
 		<a tal:condition="not: configuration/getpaginated" class="link" href="#letter-${letter}">${letter}</a>
 		<a tal:condition="configuration/getpaginated" class="link" change:link="tag ctx_brand_brandlist; brandParam[letter] letter">${letter}</a>
+		<span tal:condition="not: repeat/letter/end"> | </span>
 	</li>
 </ul>
 
 <tal:block tal:repeat="brandsForLetter brandsByFirstLetter" class="">
-	<h3 id="letter-${repeat/brandsForLetter/key}">${repeat/brandsForLetter/key}</h3>
-	<tal:block tal:condition="brandsForLetter">
-		<ul class="brands-for-letter">
+	<h2 change:h="" id="letter-${repeat/brandsForLetter/key}">${repeat/brandsForLetter/key}</h2>
+	<tal:block tal:condition="php: count(brandsForLetter)">
+		<ul class="document-list" tal:condition="configuration/getShowDetailedList">
+			<li tal:repeat="brand brandsForLetter" class="${php: repeat.brand.odd ? 'odd' : 'even'}">
+				<h3 change:h=""><a change:link="document brand">${brand/getLabelAsHtml}</a></h3>
+				<img tal:condition="brand/getVisual" change:media="document brand/getVisual; class 'document-visual'; format 'modules.brand.frontoffice/listvisual'" />
+				<div tal:condition="brand/getDescription">${brand/getDescriptionAsHtml}</div>
+				<div class="cleaner"></div>
+			</li>
+		</ul>
+		<ul class="menu-list" tal:condition="not:configuration/getShowDetailedList">
 			<li tal:repeat="brand brandsForLetter">
 				<a change:link="document brand">${brand/getLabelAsHtml}</a>
 			</li>
 		</ul>
 		<tal:block tal:condition="php: brandsForLetter instanceof paginator_Paginator" change:paginator="brandsForLetter" />
 	</tal:block>
-	<p tal:condition="not: brandsForLetter" change:translate="modules.brand.frontoffice.No-brand-for-this-letter"></p>
+	<p tal:condition="not: php: count(brandsForLetter)">${trans:m.brand.frontoffice.no-brand-for-this-letter,ucf}</p>
 </tal:block>

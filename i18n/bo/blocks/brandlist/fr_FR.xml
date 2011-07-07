@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <i18n baseKey="m.brand.bo.blocks.brandlist" lcid="fr_FR">
-  <key id="title">liste des marques</key>
-  <key id="paginated">liste paginée</key>
-  <key id="paginated-help">Si cette option n'est pas activée, toutes les marques seront affichées sur une unique page. Si par contre elle est activée, il y aura une page par lettre qui sera elle-même paginée si besoin.</key>
-  <key id="itemsperpage">nombre d'éléments par page</key>
+	<key id="title">liste des marques</key>
+	<key id="paginated">liste paginée</key>
+	<key id="paginated-help">Si cette option n'est pas activée, toutes les marques seront affichées sur une unique page. Si par contre elle est activée, il y aura une page par lettre qui sera elle-même paginée si besoin.</key>
+	<key id="itemsperpage">nombre d'éléments par page</key>
+	<key id="topshelf">rayon de premier niveau</key>
+	<key id="topshelf-help">Si renseigné, la liste des marques sera restreinte aux marques ayant des produits dans le rayon de premier niveau sélectionné.</key>
+	<key id="showdetailedlist">liste détaillée</key>
+	<key id="showdetailedlist-help">Afficher ou non les information détaillées (visuel et description) des marques dans la liste.</key>
 </i18n>

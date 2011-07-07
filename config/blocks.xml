@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <blocks>
-	<block type="modules_brand_DashboardGeneralStatistics" icon="statistics" dashboard="true"
-		label="&amp;modules.brand.bo.blocks.DashboardGeneralStatistics.Title;" />
-	<block type="modules_brand_brand" icon="brand" label="&amp;modules.brand.bo.blocks.Brand.Title;">
+	<block type="modules_brand_brand" icon="brand">
 		<parameters>
 			<parameter name="showShareBlock" type="Boolean" default-value="true" />
 		</parameters>
 	</block>
-	<block type="modules_brand_brandList" icon="list-block" label="&amp;modules.brand.bo.blocks.BrandList.Title;">
+	<block type="modules_brand_brandList" icon="list-block">
 		<parameters>
 			<parameter name="topshelf" type="modules_catalog/topshelf" />
 			<parameter name="paginated" type="Boolean" default-value="true" />
 			<parameter name="itemsPerPage" type="Integer" default-value="20" hidehelp="true" />
+			<parameter name="showDetailedList" type="Boolean" default-value="false" />
 		</parameters>
 		<xul>
 			<javascript>
@@ -29,7 +28,7 @@
 			</javascript>
 		</xul>
 	</block>
-	<block type="modules_brand_brandProducts" icon="list-block" label="&amp;modules.brand.bo.blocks.BrandProducts.Title;">
+	<block type="modules_brand_brandProducts" icon="list-block">
 		<parameters>
 			<parameter name="brand" type="modules_brand/brand" />
 			<parameter name="displayMode" type="String" list-id="modules_catalog/displaymode" default-value="list" />
@@ -47,4 +46,5 @@
 			<parameter name="displayCustomerPrice" type="Boolean" default-value="true" />
 		</parameters>
 	</block>
+	<block type="modules_brand_DashboardGeneralStatistics" icon="statistics" dashboard="true" />
 </blocks>
