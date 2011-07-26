@@ -343,7 +343,7 @@ class brand_BrandService extends f_persistentdocument_DocumentService
 			foreach ($brandDatas as $data)
 			{
 				list($brand, $lang) = $data;
-				$publication = f_Locale::translateUI(DocumentHelper::getPublicationstatusLocaleKey($brand));			
+				$publication = LocaleService::getInstance()->transBO(DocumentHelper::getStatusLocaleKey($brand));			
 				$websiteInfos['brands'][] = array(
 					'lang' => $lang,
 					'plublication' => $publication
@@ -353,6 +353,4 @@ class brand_BrandService extends f_persistentdocument_DocumentService
 		}
 		return $result;
 	}
-
-
 }
