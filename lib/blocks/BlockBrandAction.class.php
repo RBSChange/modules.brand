@@ -19,7 +19,7 @@ class brand_BlockBrandAction extends website_BlockAction
 			return website_BlockView::NONE;
 		}
 		
-		$context = $this->getPage();
+		$context = $this->getContext();
 		$isOnDetailPage = TagService::getInstance()->hasTag($context->getPersistentPage(), 'functional_brand_brand-detail');
 		$brand = $this->getDocumentParameter();
 		if ($brand === null || !($brand instanceof brand_persistentdocument_brand) || !$brand->isPublished())
