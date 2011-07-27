@@ -15,7 +15,7 @@
 			<li tal:repeat="brand brandsForLetter" class="${php: repeat.brand.odd ? 'odd' : 'even'}">
 				<h3 change:h=""><a change:link="document brand">${brand/getLabelAsHtml}</a></h3>
 				<img tal:condition="brand/getVisual" change:media="document brand/getVisual; class 'document-visual'; format 'modules.brand.frontoffice/listvisual'" />
-				<div tal:condition="brand/getDescription">${brand/getDescriptionAsHtml}</div>
+				<div tal:condition="brand/getDescription">${structure brand/getDescriptionAsHtml}</div>
 				<div class="cleaner"></div>
 			</li>
 		</ul>
