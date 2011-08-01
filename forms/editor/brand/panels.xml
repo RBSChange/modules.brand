@@ -10,7 +10,7 @@
 	<xul>
 		<javascript>
 			<constructor><![CDATA[
-				this.addTab('spaces', '&modules.brand.bo.doceditor.tab.Spaces;', 'brand-space');
+				this.addTab('spaces', "${transui:m.brand.bo.doceditor.tab.spaces,js,ucf}", 'brand-space');
 			]]></constructor>
 		</javascript>
 	</xul>
