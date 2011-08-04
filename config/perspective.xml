@@ -21,7 +21,7 @@
 				<drop model="modules_brand/brand" action="move" />
 			</drops>
 			<columns>
-				<column name="websiteUrl" label="WebsiteURL" flex="4" />
+				<column name="websiteUrl" flex="4" />
 			</columns>
 		</model>
 		<model name="modules_generic/folder">
@@ -44,7 +44,7 @@
 				<drop model="modules_brand/brand" action="move" />
 			</drops>
 			<columns>
-				<column name="websiteUrl" label="WebsiteURL" flex="4" />
+				<column name="websiteUrl" flex="4" />
 			</columns>
 		</model>
 		<model name="modules_brand/brand">
