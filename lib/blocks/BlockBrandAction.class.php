@@ -26,7 +26,7 @@ class brand_BlockBrandAction extends website_BlockAction
 		{
 			if ($isOnDetailPage)
 			{
-				HttpController::getInstance()->redirect("website", "Error404");
+				change_Controller::getInstance()->redirect("website", "Error404");
 			}
 			return website_BlockView::NONE;
 		}
