@@ -13,7 +13,7 @@
 	<tal:block tal:condition="php: count(brandsForLetter)">
 		<ul class="document-list" tal:condition="configuration/getShowDetailedList">
 			<li tal:repeat="brand brandsForLetter" class="${php: repeat.brand.odd ? 'odd' : 'even'}">
-				<h3 change:h=""><a change:link="document brand">${brand/getLabelAsHtml}</a></h3>
+				<h3 change:h=""><a change:link="document brand">${brand/getLabel}</a></h3>
 				<img tal:condition="brand/getVisual" change:media="document brand/getVisual; class 'document-visual'; format 'modules.brand.frontoffice/listvisual'" />
 				<div tal:condition="brand/getDescription">${structure brand/getDescriptionAsHtml}</div>
 				<div class="cleaner"></div>
@@ -21,7 +21,7 @@
 		</ul>
 		<ul class="menu-list" tal:condition="not:configuration/getShowDetailedList">
 			<li tal:repeat="brand brandsForLetter">
-				<a change:link="document brand">${brand/getLabelAsHtml}</a>
+				<a change:link="document brand">${brand/getLabel}</a>
 			</li>
 		</ul>
 		<tal:block tal:condition="php: brandsForLetter instanceof paginator_Paginator" change:paginator="brandsForLetter" />
