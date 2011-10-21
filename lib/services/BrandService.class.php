@@ -271,7 +271,7 @@ class brand_BrandService extends f_persistentdocument_DocumentService
 	 */
 	public function getWebsiteId($document)
 	{
-		$website = ($this->currentWebsiteForResume !== null) ? $this->currentWebsiteForResume : website_WebsiteModuleService::getInstance()->getCurrentWebsite();
+		$website = ($this->currentWebsiteForResume !== null) ? $this->currentWebsiteForResume : website_WebsiteService::getInstance()->getCurrentWebsite();
 		if ($website !== null)
 		{
 			return $website->getId();

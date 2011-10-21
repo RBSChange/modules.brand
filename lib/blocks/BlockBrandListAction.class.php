@@ -12,7 +12,7 @@ class brand_BlockBrandListAction extends website_BlockAction
 	 */
 	public function execute($request, $response)
 	{
-		$website = website_WebsiteModuleService::getInstance()->getCurrentWebsite();
+		$website = website_WebsiteService::getInstance()->getCurrentWebsite();
 		
 		$bs = brand_BrandService::getInstance();
 		$brandsByFirstLetter = array();
