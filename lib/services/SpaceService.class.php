@@ -145,7 +145,7 @@ class brand_SpaceService extends f_persistentdocument_DocumentService
 		{
 			$brand = $document->getBrand();
 			$topic = website_SystemtopicService::getInstance()->getNewDocumentInstance();
-			$topic->setReferenceId($document->getId());
+			$topic->setReferenceId(abs($document->getId()));
 			$topic->setLabel($brand->getLabel());
 			$topic->setDescription($brand->getDescription());
 			$topic->setPublicationstatus('DRAFT');
@@ -196,9 +196,9 @@ class brand_SpaceService extends f_persistentdocument_DocumentService
 			throw new BaseException('There may be only one space by website for a given brand.', 'modules.brand.document.space.exception.Only-one-space-by-website');
 		}
 		
-		// Fix referenceId if set to -1 (when the topic is created in the pre-save).
+		// Fix referenceId
 		$topic = $document->getTopic();
-		if ($topic->getReferenceId() === -1)
+		if ($topic->getReferenceId() != $document->getId())
 		{
 			$topic->setReferenceId($document->getId());
 			$topic->save();
