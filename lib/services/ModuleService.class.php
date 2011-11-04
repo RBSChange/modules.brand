@@ -39,7 +39,7 @@ class brand_ModuleService extends ModuleBaseService
 				return $this->getSpaceStructureInitializationAttributes($container, $attributes, $script);
 			
 			default:
-				throw new BaseException('Unknown structure initialization script: '.$script, 'modules.brand.bo.actions.Unknown-structure-initialization-script', array('script' => $script));
+				throw new BaseException('Unknown structure initialization script: '.$script, 'm.website.bo.actions.unknown-structure-initialization-script', array('script' => $script));
 		}
 	}
 	
@@ -54,7 +54,7 @@ class brand_ModuleService extends ModuleBaseService
 		// Check container.
 		if (!$container instanceof website_persistentdocument_website && !$container instanceof website_persistentdocument_topic)
 		{
-			throw new BaseException('Invalid website or topic', 'modules.brand.bo.general.Invalid-website-or-topic');
+			throw new BaseException('Invalid website or topic', 'm.website.bo.general.invalid-website-or-topic');
 		}
 		
 		if ($container instanceof website_persistentdocument_website)
@@ -70,7 +70,7 @@ class brand_ModuleService extends ModuleBaseService
 		if (TagService::getInstance()->hasDocumentByContextualTag('contextual_website_website_modules_brand_brandlist', $website) || 
 			TagService::getInstance()->hasDocumentByContextualTag('contextual_website_website_modules_brand_brand', $website))
 		{
-			throw new BaseException('Some pages of the global structure are already initialized', 'modules.brand.bo.general.Some-pages-already-initialized');
+			throw new BaseException('Some pages are already initialized', 'm.website.bo.actions.some-pages-already-initialized');
 		}
 		
 		// Set atrtibutes.
