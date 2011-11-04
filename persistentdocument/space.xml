@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<document xmlns="http://www.rbs.fr/schema/change-document/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.rbs.fr/schema/change-document/1.0 http://www.rbschange.fr/static/schema/change-document/3.5.xsd" model-version="1.0"
-	icon="brand-space" has-url="true" backoffice-indexable="false" use-rewrite-url="false">
-	<properties>
-		<add name="brand" type="modules_brand/brand" min-occurs="1" inverse="true" tree-node="true" />
-		<add name="websiteId" type="Integer" min-occurs="1" />
-		<add name="topic" type="modules_website/systemtopic" min-occurs="1" inverse="true" cascade-delete="true">
-			<constraints>unique:true</constraints>
-		</add>
-	</properties>
-	<statuses default="ACTIVE" />
+<document xmlns="http://www.rbs.fr/schema/change-document/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.rbs.fr/schema/change-document/1.0 http://www.rbschange.fr/static/schema/change-document/4.0.xsd" 
+	model-version="1.0" icon="brand-space" has-url="true" backoffice-indexable="false" use-rewrite-url="false">
+  <properties>
+    <property name="brand" type="modules_brand/brand" min-occurs="1" inverse="true" tree-node="true"/>
+    <property name="websiteId" type="Integer" min-occurs="1"/>
+    <property name="topic" type="modules_website/systemtopic" min-occurs="1" inverse="true" cascade-delete="true">
+      <constraint name="unique" propertyName="topic" modelName="modules_brand/space"/>
+    </property>
+  </properties>
+  <statuses default="ACTIVE"/>
 </document>
