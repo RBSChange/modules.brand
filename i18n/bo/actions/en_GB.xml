@@ -3,4 +3,8 @@
   <key id="create_">create</key>
   <key id="createroot_">create</key>
   <key id="create-brand">create brand</key>
+  <key id="generate-default-structure">generate the default structure</key>
+  <key id="initdefaultstructure">Create the brand directory topic on a site.</key>
+  <key id="locate-related-topic">Locate the associated topic in the Sites and pages module.</key>
+  <key id="showpublicationinwebsites">publication on the sites</key>
 </i18n>
