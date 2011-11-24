@@ -98,14 +98,14 @@
 		<xbl:content>
 			<xul:vbox flex="1">
 				<xul:hbox class="dialog-header">
-					<xul:label value="&amp;modules.brand.bo.dialog.Publication-in-websites;" class="dialog-title" />
+					<xul:label value="${trans:m.brand.bo.dialog.publication-in-websites,ucf,attr}" class="dialog-title" />
 					<xul:spacer flex="1" />
 					<xul:vbox pack="center">
-						<xul:toolbarbutton image="{IconsBase}/small/delete.png" oncommand="onCancel();" tooltiptexts="&amp;modules.uixul.bo.dialog.Cancel;" />
+						<xul:toolbarbutton image="{IconsBase}/small/delete.png" oncommand="onCancel();" tooltiptexts="${trans:m.uixul.bo.dialog.cancel,ucf,attr}" />
 					</xul:vbox>
 				</xul:hbox>
 				<xul:scrollbox flex="1" orient="vertical">
-					<xul:description>&amp;modules.brand.bo.dialog.Brand-not-in-website;</xul:description>
+					<xul:description>${trans:m.brand.bo.dialog.brand-not-in-website,ucf}</xul:description>
 					<xul:vbox flex="1" anonid="contents" />
 				</xul:scrollbox>
 			</xul:vbox>
@@ -149,8 +149,8 @@
 					</xul:columns>
 					<xul:rows anonid="rows">
 						<xul:row class="head-row">
-							<xul:label value="&amp;modules.brand.bo.dialog.Column-lang;" />
-							<xul:label value="&amp;modules.brand.bo.dialog.Column-publication;" />
+							<xul:label value="${trans:m.brand.bo.dialog.column-lang,ucf,attr}" />
+							<xul:label value="${trans:m.brand.bo.dialog.column-publication,ucf,attr}" />
 			            </xul:row>
 					</xul:rows>
 				</xul:grid>
@@ -197,7 +197,7 @@
 			<xul:vbox flex="1">
 				<xul:cmessageinfo anonid="message" />
 				<xul:hbox anonid="action-bar">
-					<xul:button anonid="new_space" oncommand="newSpace()" label="&amp;modules.brand.bo.doceditor.button.New-space;" image="{IconsBase}/small/add.png"/>
+					<xul:button anonid="new_space" oncommand="newSpace()" label="${trans:m.brand.bo.doceditor.button.new-space,ucf,attr}" image="{IconsBase}/small/add.png"/>
 				</xul:hbox>
 				<xul:scrollbox anonid="scrollctrl" flex="1" class="editordatacontainer" orient="vertical">
 					<xul:cfield name="spacesJSON" id="brand_brand_spacesJSON" anonid="field_spacesJSON" fieldtype="namedgridlist" flex="1" />
@@ -304,8 +304,8 @@
 				<xul:rows>
 					<xul:row class="head" anonid="head-row">
 						<xul:label name="status" value="" />
-						<xul:label name="path" value="&amp;modules.brand.bo.doceditor.spaces.Path-column;" />
-						<xul:label name="actionrow" value="&amp;modules.brand.bo.doceditor.spaces.Actions-column;" />
+						<xul:label name="path" value="${trans:m.brand.bo.doceditor.spaces.path-column,ucf,attr}" />
+						<xul:label name="actionrow" value="${trans:m.brand.bo.doceditor.spaces.actions-column,ucf,attr}" />
 					</xul:row>
 				</xul:rows>
 			</xul:grid>
@@ -313,10 +313,10 @@
 				<xul:cpublicationcell value="" />
 				<xul:label value="" />
 				<xul:toolbar class="actions">
-					<xul:toolbarbutton action="edit" image="{IconsBase}/small/edit.png" tooltiptext="&amp;modules.uixul.bo.actions.Edit;" />
-					<xul:toolbarbutton action="locate" image="{IconsBase}/small/topic.png" tooltiptext="&amp;modules.brand.bo.actions.Locate-related-topic;" />
-					<xul:toolbarbutton action="initDefaultStructure" image="{IconsBase}/small/add.png" tooltiptext="&amp;modules.brand.bo.actions.Generate-default-structure;" />
-					<xul:toolbarbutton action="delete" image="{IconsBase}/small/delete.png" tooltiptext="&amp;modules.uixul.bo.actions.Delete;" />
+					<xul:toolbarbutton action="edit" image="{IconsBase}/small/edit.png" tooltiptext="${trans:m.uixul.bo.actions.edit,ucf,attr}" />
+					<xul:toolbarbutton action="locate" image="{IconsBase}/small/topic.png" tooltiptext="${trans:m.brand.bo.actions.locate-related-topic,ucf,attr}" />
+					<xul:toolbarbutton action="initDefaultStructure" image="{IconsBase}/small/add.png" tooltiptext="${trans:m.brand.bo.actions.generate-default-structure,ucf,attr}" />
+					<xul:toolbarbutton action="delete" image="{IconsBase}/small/delete.png" tooltiptext="${trans:m.uixul.bo.actions.delete,ucf,attr}" />
 				</xul:toolbar>
 			</xul:row>
 		</content>

@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <i18n baseKey="m.brand.bo.general.column" lcid="en_GB">
-  <key id="websiteurl">brand's website URL</key>
+  <key id="websiteurl">address of the brand's website</key>
 </i18n>

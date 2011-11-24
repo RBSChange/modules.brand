@@ -3,4 +3,5 @@
   <include id="m.catalog.bo.blocks.productlistbase"/>
   <key id="title">brand products</key>
   <key id="brand">brand</key>
+  <key id="brand-help">In order to display the products of a given brand, select it here. Leave this field blank in order to select the brand automatically based on the context.</key>
 </i18n>

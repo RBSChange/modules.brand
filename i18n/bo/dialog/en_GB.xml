@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.brand.bo.dialog" lcid="en_GB">
+  <key id="brand-not-in-website">The sites listed hereafter are those for which this brand is present in at least one language.</key>
+  <key id="column-lang">language</key>
+  <key id="column-publication">publication</key>
+  <key id="publication-in-websites">details of publication on the sites</key>
+</i18n>

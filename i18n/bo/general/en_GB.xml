@@ -3,4 +3,7 @@
   <key id="module-name">brands</key>
   <key id="tree-root-name">brands</key>
   <key id="system-folder-name">brands</key>
+  <key id="confirm-delete-space">Are you sure that you want to delete this space?</key>
+  <key id="invalid-space">The container must be a brand space.</key>
+  <key id="space-already-contains-pages">The topic associated with this brand space already contains pages.</key>
 </i18n>
