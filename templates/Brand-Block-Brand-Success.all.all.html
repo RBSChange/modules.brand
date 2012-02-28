@@ -8,13 +8,13 @@
 
 <img tal:condition="brand/getVisual" change:media="document brand/getVisual; class 'float-right'; format 'modules.brand.frontoffice/detailvisual'" />
 
-<ul>
-	<li tal:condition="brand/getDescription">
-		<strong change:translate="modules.brand.frontoffice.DescriptionLabel"></strong>
-		<div>${brand/getDescriptionAsHtml}</div>
-	</li>
-	<li tal:define="websiteUrl brand/getWebsiteUrl" tal:condition="websiteUrl">
-		<strong change:translate="modules.brand.frontoffice.Website-urlLabel"></strong>
-		<a href="${websiteUrl}" class="link">${websiteUrl}</a>
-	</li>
-</ul>
+<dl class="inline-items">
+	<tal:block tal:condition="brand/getDescription">
+		<dt>${trans:m.brand.frontoffice.description,ucf}</dt>
+		<dd>${brand/getDescriptionAsHtml}</dd>
+	</tal:block>
+	<tal:block tal:define="websiteUrl brand/getWebsiteUrl" tal:condition="websiteUrl">
+		<dt>${trans:m.brand.frontoffice.website-url,ucf}</dt>
+		<dd><a href="${websiteUrl}" class="link">${websiteUrl}</a></dd>
+	</tal:block>
+</dl>
