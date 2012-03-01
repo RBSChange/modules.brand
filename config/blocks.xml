@@ -4,6 +4,10 @@
 		<parameters>
 			<parameter name="showShareBlock" type="Boolean" default-value="true" />
 		</parameters>
+		<metas>
+			<meta name="brandname" allow="title,description" />
+			<meta name="branddescription" allow="description" />
+		</metas>
 	</block>
 	<block type="modules_brand_brandList" icon="list-block">
 		<parameters>

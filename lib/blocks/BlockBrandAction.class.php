@@ -6,6 +6,21 @@
 class brand_BlockBrandAction extends website_BlockAction
 {
 	/**
+	 * @return array<String, String>
+	 */
+	public function getMetas()
+	{
+		$doc = $this->getDocumentParameter();
+		if ($doc instanceof brand_persistentdocument_brand)
+		{
+			$label = $doc->getLabel();
+			$description = f_util_StringUtils::shortenString(f_util_StringUtils::htmlToText($doc->getDescriptionAsHtml()), 100);
+			return array('brandname' => $label, 'branddescription' => $description);
+		}
+		return array('brandname' => null, 'branddescription' => null);
+	}
+	
+	/**
 	 * @see website_BlockAction::execute()
 	 *
 	 * @param f_mvc_Request $request
