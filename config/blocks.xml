@@ -35,20 +35,30 @@
 	<block type="modules_brand_brandProducts" icon="list-block">
 		<parameters>
 			<parameter name="brand" type="modules_brand/brand" />
-			<parameter name="displayMode" type="String" list-id="modules_catalog/displaymode" default-value="list" />
-			<parameter name="displayaddtocart" type="Boolean" default-value="true" />
+			<parameter name="displayMode" type="String" min-occurs="1" default-value="List" fieldtype="dropdownlist" />
+			<parameter name="nbresultsperpage" type="Integer" default-value="12" min-occurs="1" />
+			<parameter name="sortRandom" type="Boolean" default-value="false" /><parameter name="displayaddtocart" type="Boolean" default-value="true" />
 			<parameter name="showaddtofavorite" type="Boolean" default-value="true" />
-			<parameter name="activatequantityselection" type="Boolean" default-value="true" />
 			<parameter name="displayavailability" type="Boolean" default-value="true" />
 			<parameter name="displayratingaverage" type="Boolean" default-value="true" />
 			<parameter name="showshareblock" type="Boolean" default-value="false" hidden="true" />
-			<parameter name="displayproductdescription" type="Boolean" default-value="true" />
 			<parameter name="displayproductpicto" type="Boolean" default-value="false" />
 			<parameter name="displaysortmenu" type="Boolean" default-value="false" hidden="true" />
-			
-			<parameter name="useCache" type="Boolean" default-value="false" />
 			<parameter name="displayCustomerPrice" type="Boolean" default-value="true" />
-		</parameters>
+			<!-- @deprecated -->
+			<parameter name="activatequantityselection" type="Boolean" default-value="false" hidden="true" />
+			<!-- @deprecated -->
+			<parameter name="displayproductdescription" type="Boolean" default-value="false" hidden="true" />
+			<!-- @deprecated -->
+			<parameter name="useCache" type="Boolean" default-value="false" hidden="true" />		</parameters>
+		<xul>
+			<javascript>
+				<constructor><![CDATA[
+					var fields = this.getFields();
+					fields.displayMode.replaceItems({cmpref: 'modules_website/blocktemplates', blockModule: 'catalog', blockName: 'Productlist'});
+				]]></constructor>
+			</javascript>
+		</xul>
 	</block>
 	<block type="modules_brand_DashboardGeneralStatistics" icon="statistics" dashboard="true" />
 </blocks>

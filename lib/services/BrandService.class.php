@@ -139,30 +139,19 @@ class brand_BrandService extends f_persistentdocument_DocumentService
 	/**
 	 * @param brand_persistentdocument_brand $brand
 	 * @param catalog_persistentdocument_shop $shop
-	 * @param integer $offset
-	 * @param integer $maxresults
-	 * @return catalog_persistentdocument_product[]
+	 * @return integer[]
 	 */
-	public function getProductsByBrandAndShop($brand, $shop, $offset = 0, $maxresults = null)
+	public function getProductIdsByBrandAndShop($brand, $shop)
 	{
 		$query = catalog_ProductService::getInstance()->createQuery()
-					->add(Restrictions::eq('brand', $brand));
-					
+			->add(Restrictions::eq('brand', $brand))
+			->addOrder(Order::asc('label'));					
 		$query->createCriteria('compiledproduct')
-				->add(Restrictions::published())
-				->add(Restrictions::eq('brandId', $brand->getId()))
-				->add(Restrictions::eq('shopId', $shop->getId()));
-			
-		if ($maxresults !== null)
-		{
-			$query->addOrder(Order::asc('document_label'));
-			$query->setFirstResult($offset);
-			$query->setMaxResults($maxresults);
-		}
-		return $query->find();
+			->add(Restrictions::published())
+			->add(Restrictions::eq('brandId', $brand->getId()))
+			->add(Restrictions::eq('shopId', $shop->getId()));
+		return $query->setProjection(Projections::property('id'))->findColumn('id');
 	}
-	
-	
 	
 	/**
 	 * @param brand_persistentdocument_brand $document
@@ -178,9 +167,6 @@ class brand_BrandService extends f_persistentdocument_DocumentService
 			catalog_ProductService::getInstance()->setNeedCompileForBrand($document);
 		}
 	}
-	
-	
-	
 	
 	/**
 	 * @param brand_persistentdocument_brand $document
@@ -210,7 +196,6 @@ class brand_BrandService extends f_persistentdocument_DocumentService
 			$space->save();
 		}
 	}
-	
 	
 	/**
 	 * @param brand_persistentdocument_brand $document
@@ -354,5 +339,27 @@ class brand_BrandService extends f_persistentdocument_DocumentService
 		return $result;
 	}
 
-
+	// Deprecated.
+	
+	/**
+	 * @deprecated use getProductIdsByBrandAndShop
+	 */
+	public function getProductsByBrandAndShop($brand, $shop, $offset = 0, $maxresults = null)
+	{
+		$query = catalog_ProductService::getInstance()->createQuery()
+			->add(Restrictions::eq('brand', $brand));
+			
+		$query->createCriteria('compiledproduct')
+			->add(Restrictions::published())
+			->add(Restrictions::eq('brandId', $brand->getId()))
+			->add(Restrictions::eq('shopId', $shop->getId()));
+			
+		if ($maxresults !== null)
+		{
+			$query->addOrder(Order::asc('document_label'));
+			$query->setFirstResult($offset);
+			$query->setMaxResults($maxresults);
+		}
+		return $query->find();
+	}
 }
