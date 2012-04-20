@@ -44,10 +44,10 @@
 			<parameter name="showaddtocomparison" type="Boolean" default-value="true" />
 			<parameter name="displayavailability" type="Boolean" default-value="true" />
 			<parameter name="displayratingaverage" type="Boolean" default-value="true" />
-			<parameter name="showshareblock" type="Boolean" default-value="false" hidden="true" />
 			<parameter name="displayproductpicto" type="Boolean" default-value="false" />
-			<parameter name="displaysortmenu" type="Boolean" default-value="false" hidden="true" />
 			<parameter name="displayCustomerPrice" type="Boolean" default-value="true" />
+			<parameter name="showshareblock" type="Boolean" default-value="false" hidden="true" />
+			<parameter name="displaysortmenu" type="Boolean" default-value="false" hidden="true" />
 			<!-- @deprecated -->
 			<parameter name="activatequantityselection" type="Boolean" default-value="false" hidden="true" />
 			<!-- @deprecated -->
