@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
 <panels>
-	<panel name="resume" />
-	<panel name="properties" />
-	<panel name="publication" />
-	<panel name="localization" />
-	<panel name="redirect" />
-	<panel name="history" />
-	<panel name="create" />
-	<xul>
-		<javascript>
-			<constructor><![CDATA[
+  <panel name="resume"/>
+  <panel name="properties"/>
+  <panel name="localization"/>
+  <panel name="publication"/>
+  <panel name="redirect"/>
+  <panel name="history"/>
+  <panel name="create"/>
+  <xul>
+    <javascript>
+      <constructor><![CDATA[
 				this.addTab('spaces', '&modules.brand.bo.doceditor.tab.Spaces;', 'brand-space');
 			]]></constructor>
-		</javascript>
-	</xul>
+    </javascript>
+  </xul>
 </panels>
