@@ -1,11 +1,8 @@
 cdocumenteditor#edt_brand_brand cresumesection[sectionname="urlrewriting"]{
 	-moz-binding: url(binding:modules.brand.cBrandEditor#cResumeUrlrewritingByWebsiteSection);
 }
-cdocumenteditor#edt_brand_brand cspacespanel{
-	-moz-binding: url(binding:modules.brand.cBrandEditor#cSpacesPanel);
-}
 gridlist.spacesJSON{
-	-moz-binding: url(binding:modules.brand.cBrandEditor#cSpacesGrid);
+	-moz-binding: url(binding:modules.brand.editor.brand.spaces#cSpacesGrid);
 }
 wdialog[template="publicationInWebsitesDialog"]{
 	-moz-binding: url(binding:modules.brand.cBrandEditor#cPublicationInWebsitesDialog);

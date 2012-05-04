@@ -3,15 +3,9 @@
   <panel name="resume"/>
   <panel name="properties"/>
   <panel name="localization"/>
+  <panel name="spaces" icon="brand-space" labeli18n="m.brand.bo.doceditor.tab.spaces"/>
   <panel name="publication"/>
   <panel name="redirect"/>
   <panel name="history"/>
   <panel name="create"/>
-  <xul>
-    <javascript>
-      <constructor><![CDATA[
-				this.addTab('spaces', '&modules.brand.bo.doceditor.tab.Spaces;', 'brand-space');
-			]]></constructor>
-    </javascript>
-  </xul>
 </panels>
