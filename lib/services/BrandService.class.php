@@ -170,7 +170,7 @@ class brand_BrandService extends f_persistentdocument_DocumentService
 	 */
 	protected function preSave($document, $parentNodeId)
 	{
-		$firstLetter = f_util_StringUtils::strtoupper(f_util_StringUtils::substr($document->getLabel(), 0, 1));
+		$firstLetter = f_util_StringUtils::toUpper(f_util_StringUtils::substr($document->getLabel(), 0, 1));
 		$document->setFirstLetter($firstLetter);
 		if ($document->getPublicationstatus() === f_persistentdocument_PersistentDocument::STATUS_PUBLISHED 
 			&& $document->isPropertyModified('label'))
