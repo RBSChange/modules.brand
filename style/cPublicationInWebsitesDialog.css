@@ -1,6 +1,7 @@
 groupbox{
 	border: 1px solid #bbb !important;
 	-moz-border-radius: 5px !important;
+	border-radius: 5px !important;
 	background-color: #f9f9f9 !important;
 }
 groupbox caption{
