@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <i18n baseKey="m.brand.bo.blocks.brandlist" lcid="en_GB">
-  <key id="title">list of brands</key>
-  <key id="itemsperpage">number of elements per page</key>
-  <key id="paginated">paged list</key>
-  <key id="paginated-help">If this option is not activated, all of the brands will be displayed on a single page. If, on the other hand, it is activated, there will be one page for each letter, which itself will be paged if necessary.</key>
-  <key id="showdetailedlist">detailed list</key>
-  <key id="showdetailedlist-help">Show or hide the detailed information (visual element and description) for the brands in the list.</key>
-  <key id="topshelf">top-level shelf</key>
-  <key id="topshelf-help">If defined, the list of brands will be limited to the brands having products in the selected top-level shelf.</key>
+	<key id="title">list of brands</key>
+	<key id="itemsperpage">number of elements per page</key>
+	<key id="paginated">paged list</key>
+	<key id="paginated-help">If this option is not activated, all of the brands will be displayed on a single page. If, on the other hand, it is activated, there will be one page for each letter, which itself will be paged if necessary.</key>
+	<key id="showdetailedlist">detailed list</key>
+	<key id="showdetailedlist-help">Show or hide the detailed information (visual element and description) for the brands in the list.</key>
+	<key id="topshelf">top-level shelf</key>
+	<key id="topshelf-help">If defined, the list of brands will be limited to the brands having products in the selected top-level shelf.</key>
 </i18n>

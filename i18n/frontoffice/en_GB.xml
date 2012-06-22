@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <i18n baseKey="m.brand.frontoffice" lcid="en_GB">
-  <key id="all-brands">list of brands</key>
-  <key id="brand-products-title">products of the {brand} brand</key>
-  <key id="description">description</key>
-  <key id="no-brand-for-this-letter">There is no brand name that begins with this letter.</key>
-  <key id="product-count">number of products</key>
-  <key id="website-url">website</key>
+	<key id="all-brands">list of brands</key>
+	<key id="brand-products-title">products of the {brand} brand</key>
+	<key id="description">description</key>
+	<key id="no-brand-for-this-letter">There is no brand name that begins with this letter.</key>
+	<key id="product-count">number of products</key>
+	<key id="website-url">website</key>
 </i18n>

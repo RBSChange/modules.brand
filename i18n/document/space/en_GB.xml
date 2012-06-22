@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <i18n baseKey="m.brand.document.space" lcid="en_GB">
-  <key id="document-name">brand space</key>
-  <key id="brand">brand</key>
-  <key id="mount-parent">parent container</key>
-  <key id="mount-parent-help">Topic or site in which this brand space must appear.</key>
+	<key id="document-name">brand space</key>
+	<key id="brand">brand</key>
+	<key id="mount-parent">parent container</key>
+	<key id="mount-parent-help">Topic or site in which this brand space must appear.</key>
 </i18n>

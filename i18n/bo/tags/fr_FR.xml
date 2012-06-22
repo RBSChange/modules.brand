@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <i18n baseKey="m.brand.bo.tags" lcid="fr_FR">
-  <key id="brand-block">détail d'une marque</key>
-  <key id="brandlist-block">liste des marques</key>
+	<key id="brand-block">détail d'une marque</key>
+	<key id="brandlist-block">liste des marques</key>
 </i18n>

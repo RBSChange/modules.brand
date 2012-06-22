@@ -1,17 +1,11 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <panels>
 	<panel name="resume" />
 	<panel name="properties" />
-	<panel name="publication" />
 	<panel name="localization" />
+	<panel name="spaces" icon="brand-space" labeli18n="m.brand.bo.doceditor.tab.spaces" />
+	<panel name="publication" />
 	<panel name="redirect" />
 	<panel name="history" />
 	<panel name="create" />
-	<xul>
-		<javascript>
-			<constructor><![CDATA[
-				this.addTab('spaces', "${transui:m.brand.bo.doceditor.tab.spaces,js,ucf}", 'brand-space');
-			]]></constructor>
-		</javascript>
-	</xul>
 </panels>

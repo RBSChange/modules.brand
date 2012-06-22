@@ -5,15 +5,15 @@
  */
 class brand_SpaceScriptDocumentElement extends import_ScriptDocumentElement
 {
-    /**
-     * @return brand_persistentdocument_space
-     */
-    protected function initPersistentDocument()
-    {
-    	return brand_SpaceService::getInstance()->getNewDocumentInstance();
-    }
-    
-    /**
+	/**
+	 * @return brand_persistentdocument_space
+	 */
+	protected function initPersistentDocument()
+	{
+		return brand_SpaceService::getInstance()->getNewDocumentInstance();
+	}
+	
+	/**
 	 * @return f_persistentdocument_PersistentDocumentModel
 	 */
 	protected function getDocumentModel()

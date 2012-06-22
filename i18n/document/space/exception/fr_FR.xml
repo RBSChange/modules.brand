@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <i18n baseKey="m.brand.document.space.exception" lcid="fr_FR">
-  <key id="mount-parent-required">Un espace marque doit obligatoirement avoir un point de montage.</key>
-  <key id="mount-parent-bad-type">Le point de montage d'un espace marque doit obligatoirement être un site ou une rubrique.</key>
-  <key id="only-one-space-by-website">Cette marque a déjà un espace sur ce site.</key>
+	<key id="mount-parent-required">Un espace marque doit obligatoirement avoir un point de montage.</key>
+	<key id="mount-parent-bad-type">Le point de montage d'un espace marque doit obligatoirement être un site ou une rubrique.</key>
+	<key id="only-one-space-by-website">Cette marque a déjà un espace sur ce site.</key>
 </i18n>

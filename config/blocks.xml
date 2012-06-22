@@ -4,6 +4,10 @@
 		<parameters>
 			<parameter name="showShareBlock" type="Boolean" default-value="true" />
 		</parameters>
+		<metas>
+			<meta name="brandname" allow="title,description" />
+			<meta name="branddescription" allow="description" />
+		</metas>
 	</block>
 	<block type="modules_brand_brandList" icon="list-block">
 		<parameters>
@@ -31,20 +35,44 @@
 	<block type="modules_brand_brandProducts" icon="list-block">
 		<parameters>
 			<parameter name="brand" type="modules_brand/brand" />
-			<parameter name="displayMode" type="String" list-id="modules_catalog/displaymode" default-value="list" />
+			<parameter name="displayMode" type="String" min-occurs="1" default-value="List" fieldtype="dropdownlist" />
+			<parameter name="nbresultsperpage" type="Integer" default-value="12" min-occurs="1" />
+			<parameter name="sortRandom" type="Boolean" default-value="false" />
 			<parameter name="displayaddtocart" type="Boolean" default-value="true" />
+			<parameter name="useAddToCartPopin" type="Boolean" default-value="true" />
 			<parameter name="showaddtofavorite" type="Boolean" default-value="true" />
-			<parameter name="activatequantityselection" type="Boolean" default-value="true" />
+			<parameter name="showaddtocomparison" type="Boolean" default-value="true" />
 			<parameter name="displayavailability" type="Boolean" default-value="true" />
 			<parameter name="displayratingaverage" type="Boolean" default-value="true" />
-			<parameter name="showshareblock" type="Boolean" default-value="false" hidden="true" />
-			<parameter name="displayproductdescription" type="Boolean" default-value="true" />
 			<parameter name="displayproductpicto" type="Boolean" default-value="false" />
-			<parameter name="displaysortmenu" type="Boolean" default-value="false" hidden="true" />
-			
-			<parameter name="useCache" type="Boolean" default-value="false" />
 			<parameter name="displayCustomerPrice" type="Boolean" default-value="true" />
+			<parameter name="showshareblock" type="Boolean" default-value="false" hidden="true" />
+			<parameter name="displaysortmenu" type="Boolean" default-value="false" hidden="true" />
+			<!-- @deprecated -->
+			<parameter name="activatequantityselection" type="Boolean" default-value="false" hidden="true" />
+			<!-- @deprecated -->
+			<parameter name="displayproductdescription" type="Boolean" default-value="false" hidden="true" />
+			<!-- @deprecated -->
+			<parameter name="useCache" type="Boolean" default-value="false" hidden="true" />
 		</parameters>
+		<xul>
+			<javascript>
+				<constructor><![CDATA[
+					var fields = this.getFields();
+					var me = this;
+					fields.displayMode.replaceItems({cmpref: 'modules_website/blocktemplates', blockModule: 'catalog', blockName: 'Productlist'});
+					fields.displayaddtocart.addEventListener('fieldChanged', function(event) { me.onDisplayaddtocartChange(); }, true)
+					me.addEventListener('gridValuesUpdated', function(event) { me.onDisplayaddtocartChange(); }, true);
+				]]></constructor>
+				<method name="onDisplayaddtocartChange">
+					<body><![CDATA[
+						var fields = this.getFields();
+						var value = (fields.displayaddtocart.value != 'true');
+						this.getElementByAnonId('useAddToCartPopin_cnt').collapsed = value;
+					]]></body>
+				</method>
+			</javascript>
+		</xul>
 	</block>
 	<block type="modules_brand_DashboardGeneralStatistics" icon="statistics" dashboard="true" />
 </blocks>

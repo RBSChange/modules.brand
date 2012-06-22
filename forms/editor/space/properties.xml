@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <panel>
 	<section labeli18n="m.uixul.bo.doceditor.fieldsgroup.title">
-		<field name="mountParentId" type="document" allow="[modules_website_website],[modules_website_topic]" moduleselector="website" required="true"
-			labeli18n="m.brand.document.space.mount-parent" shorthelpi18n="m.brand.document.space.mount-parent-help" />
+		<field name="mountParentId" type="document" allow="[modules_website_website],[modules_website_topic]" moduleselector="website" required="true" labeli18n="m.brand.document.space.mount-parent" shorthelpi18n="m.brand.document.space.mount-parent-help" />
 	</section>
 </panel>

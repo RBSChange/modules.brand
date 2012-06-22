@@ -1,28 +1,10 @@
 <?php
 /**
- * brand_BrandService
  * @package modules.brand
+ * @method brand_BrandService getInstance()
  */
 class brand_BrandService extends f_persistentdocument_DocumentService
-{
-	/**
-	 * Singleton
-	 * @var brand_BrandService
-	 */
-	private static $instance = null;
-	
-	/**
-	 * @return brand_BrandService
-	 */
-	public static function getInstance()
-	{
-		if (is_null(self::$instance))
-		{
-			self::$instance = new self();
-		}
-		return self::$instance;
-	}
-	
+{	
 	/**
 	 * @return brand_persistentdocument_brand
 	 */
@@ -37,7 +19,7 @@ class brand_BrandService extends f_persistentdocument_DocumentService
 	 */
 	public function createQuery()
 	{
-		return $this->pp->createQuery('modules_brand/brand');
+		return $this->getPersistentProvider()->createQuery('modules_brand/brand');
 	}
 	
 	/**
@@ -139,34 +121,23 @@ class brand_BrandService extends f_persistentdocument_DocumentService
 	/**
 	 * @param brand_persistentdocument_brand $brand
 	 * @param catalog_persistentdocument_shop $shop
-	 * @param integer $offset
-	 * @param integer $maxresults
-	 * @return catalog_persistentdocument_product[]
+	 * @return integer[]
 	 */
-	public function getProductsByBrandAndShop($brand, $shop, $offset = 0, $maxresults = null)
+	public function getProductIdsByBrandAndShop($brand, $shop)
 	{
 		$query = catalog_ProductService::getInstance()->createQuery()
-					->add(Restrictions::eq('brand', $brand));
-					
+			->add(Restrictions::eq('brand', $brand))
+			->addOrder(Order::asc('label'));					
 		$query->createCriteria('compiledproduct')
-				->add(Restrictions::published())
-				->add(Restrictions::eq('brandId', $brand->getId()))
-				->add(Restrictions::eq('shopId', $shop->getId()));
-			
-		if ($maxresults !== null)
-		{
-			$query->addOrder(Order::asc('document_label'));
-			$query->setFirstResult($offset);
-			$query->setMaxResults($maxresults);
-		}
-		return $query->find();
+			->add(Restrictions::published())
+			->add(Restrictions::eq('brandId', $brand->getId()))
+			->add(Restrictions::eq('shopId', $shop->getId()));
+		return $query->setProjection(Projections::property('id'))->findColumn('id');
 	}
-	
-	
 	
 	/**
 	 * @param brand_persistentdocument_brand $document
-	 * @param Integer $parentNodeId
+	 * @param integer $parentNodeId
 	 */
 	protected function preSave($document, $parentNodeId)
 	{
@@ -179,12 +150,9 @@ class brand_BrandService extends f_persistentdocument_DocumentService
 		}
 	}
 	
-	
-	
-	
 	/**
 	 * @param brand_persistentdocument_brand $document
-	 * @param String $oldPublicationStatus
+	 * @param string $oldPublicationStatus
 	 * @param array $params
 	 * @return void
 	 */
@@ -199,7 +167,7 @@ class brand_BrandService extends f_persistentdocument_DocumentService
 		
 	/**
 	 * @param brand_persistentdocument_brand $document
-	 * @param Integer $parentNodeId Parent node ID where to save the document.
+	 * @param integer $parentNodeId Parent node ID where to save the document.
 	 */
 	protected function postSave($document, $parentNodeId)
 	{
@@ -210,7 +178,6 @@ class brand_BrandService extends f_persistentdocument_DocumentService
 			$space->save();
 		}
 	}
-	
 	
 	/**
 	 * @param brand_persistentdocument_brand $document
@@ -243,7 +210,7 @@ class brand_BrandService extends f_persistentdocument_DocumentService
 			{
 				$website = DocumentHelper::getDocumentInstance($row['websiteId'], 'modules_website/website');
 				$urlData[] = array(
-					'label' => f_Locale::translateUI('&modules.brand.bo.doceditor.Url-for-website;', array('website' => $website->getLabel())), 
+					'label' => LocaleService::getInstance()->trans('m.brand.bo.doceditor.url-for-website', array('ucf'), array('website' => $website->getLabel())), 
 					'href' => str_replace('&amp;', '&', $this->generateUrlForWebsite($document, $website, $lang, array(), false)),
 					'class' => ($website->isPublished()) ? 'link' : ''
 				);
@@ -284,7 +251,7 @@ class brand_BrandService extends f_persistentdocument_DocumentService
 	 * @param website_persistentdocument_website $shop
 	 * @param string $lang
 	 * @param array $parameters
-	 * @param Boolean $useCache
+	 * @param boolean $useCache
 	 * @return string
 	 */
 	public function generateUrlForWebsite($brand, $website, $lang = null, $parameters = array(), $useCache = true)
@@ -343,7 +310,7 @@ class brand_BrandService extends f_persistentdocument_DocumentService
 			foreach ($brandDatas as $data)
 			{
 				list($brand, $lang) = $data;
-				$publication = LocaleService::getInstance()->transBO(DocumentHelper::getStatusLocaleKey($brand));			
+				$publication = LocaleService::getInstance()->trans(DocumentHelper::getStatusLocaleKey($brand));			
 				$websiteInfos['brands'][] = array(
 					'lang' => $lang,
 					'plublication' => $publication

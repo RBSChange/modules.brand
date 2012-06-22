@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <i18n baseKey="m.brand.document.space.exception" lcid="en_GB">
-  <key id="mount-parent-bad-type">The parent container for a brand space must be a site or a topic.</key>
-  <key id="mount-parent-required">A brand space must have a parent container.</key>
-  <key id="only-one-space-by-website">This brand already has a space on the site.</key>
+	<key id="mount-parent-bad-type">The parent container for a brand space must be a site or a topic.</key>
+	<key id="mount-parent-required">A brand space must have a parent container.</key>
+	<key id="only-one-space-by-website">This brand already has a space on the site.</key>
 </i18n>

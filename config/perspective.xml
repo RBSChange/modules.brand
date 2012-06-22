@@ -1,9 +1,9 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <perspective>
 	<models>
 		<model name="modules_generic/rootfolder">
 			<contextactions>
-				<contextaction name="edit"/>
+				<contextaction name="edit" />
 				<contextaction name="openTreeNodeOrder" />
 				<groupactions name="createRoot_">
 					<contextaction name="createFolder" />
@@ -21,12 +21,12 @@
 				<drop model="modules_brand/brand" action="move" />
 			</drops>
 			<columns>
-				<column name="websiteUrl" flex="4" />
+				<column name="websiteUrl" flex="4" labeli18n="m.brand.bo.general.column.websiteurl" />
 			</columns>
 		</model>
 		<model name="modules_generic/folder">
 			<contextactions>
-				<contextaction name="edit"/>
+				<contextaction name="edit" />
 				<contextaction name="delete" />
 				<contextaction name="openTreeNodeOrder" />
 				<groupactions name="create_">
@@ -44,31 +44,31 @@
 				<drop model="modules_brand/brand" action="move" />
 			</drops>
 			<columns>
-				<column name="websiteUrl" flex="4" />
+				<column name="websiteUrl" flex="4" labeli18n="m.brand.bo.general.column.websiteurl" />
 			</columns>
 		</model>
 		<model name="modules_brand/brand">
 			<contextactions>
-				<contextaction name="edit"/>
+				<contextaction name="edit" />
 				<contextaction name="delete" />
-				<contextaction name="deactivated"/>
-				<contextaction name="reactivate"/>			
-				<contextaction name="showPublicationInWebsites" />			
+				<contextaction name="deactivated" />
+				<contextaction name="reactivate" />
+				<contextaction name="showPublicationInWebsites" />
 			</contextactions>
 		</model>
 	</models>
 	<toolbar>
-		<toolbarbutton name="edit"/>
+		<toolbarbutton name="edit" />
 		<toolbarbutton name="delete" />
-		<toolbarbutton name="deactivated"/>
-		<toolbarbutton name="reactivate"/>
+		<toolbarbutton name="deactivated" />
+		<toolbarbutton name="reactivate" />
 	</toolbar>
 	<actions>
-		<action name="refresh" single="true" icon="refresh" labeli18n="m.uixul.bo.actions.refresh"/>
-		<action name="edit" single="true" permission="Load" icon="edit" labeli18n="m.uixul.bo.actions.edit"/>
+		<action name="refresh" single="true" icon="refresh" labeli18n="m.uixul.bo.actions.refresh" />
+		<action name="edit" single="true" permission="Load" icon="edit" labeli18n="m.uixul.bo.actions.edit" />
 		<action name="delete" permission="Delete" icon="delete" labeli18n="m.uixul.bo.actions.delete" />
-		<action name="deactivated" permission="Deactivated" icon="deactivated" labeli18n="m.uixul.bo.actions.deactivate"/>
-		<action name="reactivate" permission="ReActivate" icon="reactivate" labeli18n="m.uixul.bo.actions.reactivate"/>
+		<action name="deactivated" permission="Deactivated" icon="deactivated" labeli18n="m.uixul.bo.actions.deactivate" />
+		<action name="reactivate" permission="ReActivate" icon="reactivate" labeli18n="m.uixul.bo.actions.reactivate" />
 		<action name="openTreeNodeOrder" single="true" permission="Order" icon="sort" labeli18n="m.uixul.bo.actions.set-children-order" />
 		<action name="openFolder" icon="open-folder" labeli18n="m.uixul.bo.actions.openfolder" />
 		<action name="create_" single="true" icon="add" />

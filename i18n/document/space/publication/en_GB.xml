@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <i18n baseKey="m.brand.document.space.publication" lcid="en_GB">
-  <key id="brand-not-published-in-website">the brand is not published on this site</key>
+	<key id="brand-not-published-in-website">the brand is not published on this site</key>
 </i18n>

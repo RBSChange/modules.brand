@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <tags>
-	<tag labeli18n="m.brand.bo.tags.brand-block" icon="brand">contextual_website_website_modules_brand_brand</tag>
-	<tag labeli18n="m.brand.bo.tags.brandlist-block" icon="list-block">contextual_website_website_modules_brand_brandlist</tag>
+	<tag icon="brand" labeli18n="m.brand.bo.tags.brand-block">contextual_website_website_modules_brand_brand</tag>
+	<tag icon="list-block" labeli18n="m.brand.bo.tags.brandlist-block">contextual_website_website_modules_brand_brandlist</tag>
 </tags>

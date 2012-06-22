@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <i18n baseKey="m.brand.bo.blocks.dashboardgeneralstatistics" lcid="en_GB">
-  <key id="title">general statistics on the brands</key>
-  <key id="brands-count">number of brands</key>
-  <key id="used-in-product">associated with a product</key>
-  <key id="total">total</key>
-  <key id="created-today">created today</key>
-  <key id="modified-today">edited today</key>
+	<key id="title">general statistics on the brands</key>
+	<key id="brands-count">number of brands</key>
+	<key id="used-in-product">associated with a product</key>
+	<key id="total">total</key>
+	<key id="created-today">created today</key>
+	<key id="modified-today">edited today</key>
 </i18n>

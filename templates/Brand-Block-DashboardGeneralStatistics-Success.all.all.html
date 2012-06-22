@@ -1,22 +1,22 @@
 <div class="dashboard-widget" tal:omit-tag="refresh" refreshURL="${refreshURL}" title="${title}" icon="${icon}">
 	<tal:block tal:condition="forEdition">
 		<div class="title-bar" ><img src="${icon}" /> ${title}</div>
-		<div class="content-block"><div class="content" tal:content="transui:m.dashboard.dashboard.dummycontent,ucf">...</div></div>
+		<div class="content-block"><div class="content">${trans:m.dashboard.dashboard.dummycontent,ucf}</div></div>
 	</tal:block>
 	<tal:block tal:condition="not:forEdition">
-		<table width="100%" tal:condition="widget">
+		<table style="width: 100%" tal:condition="widget">
 			<thead>
 				<tr>
 					<th />
-					<th tal:content="transui:m.brand.bo.blocks.dashboardgeneralstatistics.used-in-product,ucf" />
-					<th tal:content="transui:m.brand.bo.blocks.dashboardgeneralstatistics.total,ucf" />
-					<th tal:content="transui:m.brand.bo.blocks.dashboardgeneralstatistics.created-today,ucf" />
-					<th tal:content="transui:m.brand.bo.blocks.dashboardgeneralstatistics.modified-today,ucf" />
+					<th>${trans:m.brand.bo.blocks.dashboardgeneralstatistics.used-in-product,ucf}</th>
+					<th>${trans:m.brand.bo.blocks.dashboardgeneralstatistics.total,ucf}</th>
+					<th>${trans:m.brand.bo.blocks.dashboardgeneralstatistics.created-today,ucf}</th>
+					<th>${trans:m.brand.bo.blocks.dashboardgeneralstatistics.modified-today,ucf}</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr tal:repeat="line widget">
-					<td tal:repeat="value line" tal:content="value" />
+					<td tal:repeat="value line">${structure value}</td>
 				</tr>
 			</tbody>
 		</table>

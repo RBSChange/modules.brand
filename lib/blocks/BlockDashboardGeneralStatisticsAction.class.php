@@ -18,8 +18,7 @@ class brand_BlockDashboardGeneralStatisticsAction extends dashboard_BlockDashboa
 		
 		$bs = brand_BrandService::getInstance();				
 		$widget = array(
-			array(
-				f_Locale::translate('&modules.brand.bo.blocks.dashboardgeneralstatistics.Brands-count;'), 
+			array(LocaleService::getInstance()->trans('m.brand.bo.blocks.dashboardgeneralstatistics.brands-count', array('ucf')), 
 				$this->getCount($bs, true),
 				$this->getCount($bs, false), 
 				$this->getTodayCount($bs, true), 
@@ -31,8 +30,8 @@ class brand_BlockDashboardGeneralStatisticsAction extends dashboard_BlockDashboa
 	
 	/**
 	 * @param DocumentService $service
-	 * @param Boolean $published
-	 * @return Integer
+	 * @param boolean $published
+	 * @return integer
 	 */
 	private function getCount($service, $used)
 	{
@@ -47,8 +46,8 @@ class brand_BlockDashboardGeneralStatisticsAction extends dashboard_BlockDashboa
 
 	/**
 	 * @param DocumentService $service
-	 * @param Boolean $published
-	 * @return Integer
+	 * @param boolean $published
+	 * @return integer
 	 */
 	private function getTodayCount($service, $created)
 	{

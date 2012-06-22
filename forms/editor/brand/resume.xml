@@ -1,23 +1,18 @@
-<?xml version="1.0"?>
-<panel>	
-	<section name="properties" linkedtab="properties" labeli18n="m.uixul.bo.doceditor.section.properties" 
-		image="{IconsBase}/small/edit-properties.png">
+<?xml version="1.0" encoding="UTF-8"?>
+<panel>
+	<section name="properties" linkedtab="properties" labeli18n="m.uixul.bo.doceditor.section.properties" image="{IconsBase}/small/edit-properties.png">
 		<property name="label" labeli18n="m.uixul.bo.doceditor.property.label" />
 		<property name="author" labeli18n="m.uixul.bo.doceditor.property.author" />
 		<property name="creationdate" labeli18n="m.uixul.bo.doceditor.property.creationdate" />
-	</section>				
-	<section name="publication" linkedtab="publication" labeli18n="m.uixul.bo.doceditor.section.publication" 
-		image="{IconsBase}/small/status.png">
-		<property name="status" class="action" type="showPublicationInWebsites" labeli18n="m.uixul.bo.doceditor.property.status"/>
 	</section>
-	<section name="localization" linkedtab="localization" labeli18n="m.uixul.bo.doceditor.section.localization" 
-		image="{IconsBase}/small/translate.png">
-		<property name="languages" type="langs" labeli18n="m.uixul.bo.doceditor.property.languages"/>
+	<section name="localization" linkedtab="localization" labeli18n="m.uixul.bo.doceditor.section.localization" image="{IconsBase}/small/translate.png">
+		<property name="languages" type="langs" labeli18n="m.uixul.bo.doceditor.property.languages" />
 	</section>
-	<section name="history" linkedtab="history" actiontexti18n="m.uixul.bo.doceditor.section.action.view"
-		labeli18n="m.uixul.bo.doceditor.section.history" 
-		image="{IconsBase}/small/history.png">
-		<property name="modificationdate" labeli18n="m.uixul.bo.doceditor.property.modificationdate"/>
+	<section name="publication" linkedtab="publication" labeli18n="m.uixul.bo.doceditor.section.publication" image="{IconsBase}/small/status.png">
+		<property name="status" class="action" type="showPublicationInWebsites" labeli18n="m.uixul.bo.doceditor.property.status" />
 	</section>
 	<section flex="1" name="urlrewriting" linkedtab="redirect" labeli18n="m.uixul.bo.doceditor.section.urlrewriting" image="{IconsBase}/small/urlrewriting.png" />
+	<section name="history" linkedtab="history" actiontexti18n="m.uixul.bo.doceditor.section.action.view" labeli18n="m.uixul.bo.doceditor.section.history" image="{IconsBase}/small/history.png">
+		<property name="modificationdate" labeli18n="m.uixul.bo.doceditor.property.modificationdate" />
+	</section>
 </panel>

@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <i18n baseKey="m.brand.bo.blocks.brand" lcid="en_GB">
-  <key id="title">brand details</key>
-  <key id="showshareblock">activate link sharing</key>
-  <key id="showshareblock-help">Activates or deactivates the link sharing icons.</key>
+	<key id="title">brand details</key>
+	<key id="showshareblock">activate link sharing</key>
+	<key id="showshareblock-help">Activates or deactivates the link sharing icons.</key>
 </i18n>

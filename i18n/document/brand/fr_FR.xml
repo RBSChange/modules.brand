@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <i18n baseKey="m.brand.document.brand" lcid="fr_FR">
-  <key id="document-name">marque</key>
-  <key id="label">libellé</key>
-  <key id="visual">logo</key>
-  <key id="visual-help">logo de la marque : image à sélectionner dans la Mediathèque.</key>
-  <key id="description">description</key>
-  <key id="websiteurl">adresse du site internet</key>
-  <key id="websiteurl-help">adresse du site internet de la marque : selon les modèles de mise en page, un lien pourra être créé sur le logo de la marque pour se rendre sur son site internet.</key>
+	<key id="document-name">marque</key>
+	<key id="label">libellé</key>
+	<key id="visual">logo</key>
+	<key id="visual-help">logo de la marque : image à sélectionner dans la Mediathèque.</key>
+	<key id="description">description</key>
+	<key id="websiteurl">adresse du site internet</key>
+	<key id="websiteurl-help">adresse du site internet de la marque : selon les modèles de mise en page, un lien pourra être créé sur le logo de la marque pour se rendre sur son site internet.</key>
 </i18n>

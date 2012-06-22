@@ -1,20 +1,18 @@
 <ul class="mini-navigation">
 	<li><a class="link" change:link="tag ctx_brand_brandlist" tal:content="trans:m.brand.frontoffice.all-brands,ucf"></a></li>
 </ul>
-
 <tal:block tal:condition="configuration/getShowShareBlock" change:block="" module="sharethis" name="Sharepage" />
-
 <h1 change:h="">${brand/getLabel}</h1>
 
 <img tal:condition="brand/getVisual" change:media="document brand/getVisual; class 'float-right'; format 'modules.brand.frontoffice/detailvisual'" />
 
-<ul>
-	<li tal:condition="brand/getDescription">
-		<strong tal:content="trans:m.brand.frontoffice.description,ucf,lab"></strong>
-		<div>${structure brand/getDescriptionAsHtml}</div>
-	</li>
-	<li tal:define="websiteUrl brand/getWebsiteUrl" tal:condition="websiteUrl">
-		<strong tal:content="trans:m.brand.frontoffice.website-url,ucf,lab"></strong>
-		<a href="${websiteUrl}" class="link">${websiteUrl}</a>
-	</li>
-</ul>
+<dl class="inline-items">
+	<tal:block tal:condition="brand/getDescription">
+		<dt>${trans:m.brand.frontoffice.description,ucf}</dt>
+		<dd>${structure brand/getDescriptionAsHtml}</dd>
+	</tal:block>
+	<tal:block tal:define="websiteUrl brand/getWebsiteUrl" tal:condition="websiteUrl">
+		<dt>${trans:m.brand.frontoffice.website-url,ucf}</dt>
+		<dd><a href="${websiteUrl}" class="link">${websiteUrl}</a></dd>
+	</tal:block>
+</dl>

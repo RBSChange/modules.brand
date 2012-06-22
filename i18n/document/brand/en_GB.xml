@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <i18n baseKey="m.brand.document.brand" lcid="en_GB">
-  <key id="document-name">brand</key>
-  <key id="label">label</key>
-  <key id="visual">logo</key>
-  <key id="visual-help">Brand's logo: image to be selected in the "Media" module.</key>
-  <key id="description">description</key>
-  <key id="websiteurl">website address</key>
-  <key id="websiteurl-help">This is the address of the brand's website: depending on the layout templates, a link to the brand's website may be created on the brand's logo.</key>
+	<key id="document-name">brand</key>
+	<key id="label">label</key>
+	<key id="visual">logo</key>
+	<key id="visual-help">Brand's logo: image to be selected in the "Media" module.</key>
+	<key id="description">description</key>
+	<key id="websiteurl">website address</key>
+	<key id="websiteurl-help">This is the address of the brand's website: depending on the layout templates, a link to the brand's website may be created on the brand's logo.</key>
 </i18n>

@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <i18n baseKey="m.brand.bo.doceditor.spaces" lcid="en_GB">
-  <key id="path-column">location</key>
-  <key id="actions-column">actions</key>
+	<key id="path-column">location</key>
+	<key id="actions-column">actions</key>
 </i18n>

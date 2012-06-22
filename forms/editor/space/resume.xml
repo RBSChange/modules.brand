@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <panel>
 	<section name="properties" linkedtab="properties" labeli18n="m.uixul.bo.doceditor.section.properties" image="{IconsBase}/small/edit-properties.png">
 		<property name="label" labeli18n="m.uixul.bo.doceditor.property.label" />
@@ -10,8 +10,8 @@
 		<property name="status" labeli18n="m.uixul.bo.doceditor.property.status" />
 		<property name="workflow" labeli18n="m.uixul.bo.doceditor.property.workflow" />
 	</section>
-	<section name="history" linkedtab="history" actiontexti18n="m.uixul.bo.doceditor.section.action.view" labeli18n="m.uixul.bo.doceditor.section.history"
-		image="{IconsBase}/small/history.png">
+	<section flex="1" name="urlrewriting" labeli18n="m.uixul.bo.doceditor.section.urlrewriting" image="{IconsBase}/small/urlrewriting.png" />
+	<section name="history" linkedtab="history" actiontexti18n="m.uixul.bo.doceditor.section.action.view" labeli18n="m.uixul.bo.doceditor.section.history" image="{IconsBase}/small/history.png">
 		<property name="modificationdate" labeli18n="m.uixul.bo.doceditor.property.modificationdate" />
 	</section>
 </panel>

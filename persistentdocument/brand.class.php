@@ -5,4 +5,5 @@
  */
 class brand_persistentdocument_brand extends brand_persistentdocument_brandbase
 {
+
 }

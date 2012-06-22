@@ -1,27 +1,10 @@
 <?php
 /**
- * brand_SpaceService
  * @package modules.brand
+ * @method brand_ModuleService getInstance()
  */
 class brand_SpaceService extends f_persistentdocument_DocumentService
 {
-	/**
-	 * @var brand_SpaceService
-	 */
-	private static $instance;
-
-	/**
-	 * @return brand_SpaceService
-	 */
-	public static function getInstance()
-	{
-		if (self::$instance === null)
-		{
-			self::$instance = new self();
-		}
-		return self::$instance;
-	}
-
 	/**
 	 * @return brand_persistentdocument_space
 	 */
@@ -38,7 +21,7 @@ class brand_SpaceService extends f_persistentdocument_DocumentService
 	 */
 	public function createQuery()
 	{
-		return $this->pp->createQuery('modules_brand/space');
+		return $this->getPersistentProvider()->createQuery('modules_brand/space');
 	}
 	
 	/**
@@ -49,7 +32,7 @@ class brand_SpaceService extends f_persistentdocument_DocumentService
 	 */
 	public function createStrictQuery()
 	{
-		return $this->pp->createQuery('modules_brand/space', false);
+		return $this->getPersistentProvider()->createQuery('modules_brand/space', false);
 	}
 	
 	/**
@@ -95,7 +78,7 @@ class brand_SpaceService extends f_persistentdocument_DocumentService
 
 	/**
 	 * @param brand_persistentdocument_space $document
-	 * @param Integer $parentNodeId Parent node ID where to save the document.
+	 * @param integer $parentNodeId Parent node ID where to save the document.
 	 * @return void
 	 */
 	protected function preInsert($document, $parentNodeId)
@@ -113,7 +96,7 @@ class brand_SpaceService extends f_persistentdocument_DocumentService
 
 	/**
 	 * @param brand_persistentdocument_space $document
-	 * @param Integer $parentNodeId Parent node ID where to save the document.
+	 * @param integer $parentNodeId Parent node ID where to save the document.
 	 * @return void
 	 */
 	protected function preUpdate($document, $parentNodeId)
@@ -145,7 +128,7 @@ class brand_SpaceService extends f_persistentdocument_DocumentService
 		{
 			$brand = $document->getBrand();
 			$topic = website_SystemtopicService::getInstance()->getNewDocumentInstance();
-			$topic->setReferenceId(abs($document->getId()));
+			$topic->setReferenceId($document->getId());
 			$topic->setLabel($brand->getLabel());
 			$topic->setDescription($brand->getDescription());
 			$topic->setPublicationstatus('DRAFT');
@@ -166,7 +149,7 @@ class brand_SpaceService extends f_persistentdocument_DocumentService
 
 	/**
 	 * @param brand_persistentdocument_space $document
-	 * @param Integer $parentNodeId Parent node ID where to save the document.
+	 * @param integer $parentNodeId Parent node ID where to save the document.
 	 * @return void
 	 */
 	protected function postUpdate($document, $parentNodeId)
@@ -179,7 +162,7 @@ class brand_SpaceService extends f_persistentdocument_DocumentService
 
 	/**
 	 * @param brand_persistentdocument_space $document
-	 * @param Integer $parentNodeId Parent node ID where to save the document.
+	 * @param integer $parentNodeId Parent node ID where to save the document.
 	 * @return void
 	 */
 	protected function postSave($document, $parentNodeId)
@@ -196,9 +179,9 @@ class brand_SpaceService extends f_persistentdocument_DocumentService
 			throw new BaseException('There may be only one space by website for a given brand.', 'modules.brand.document.space.exception.Only-one-space-by-website');
 		}
 		
-		// Fix referenceId
+		// Fix referenceId if set to -1 (when the topic is created in the pre-save).
 		$topic = $document->getTopic();
-		if ($topic->getReferenceId() != $document->getId())
+		if ($topic->getReferenceId() === -1)
 		{
 			$topic->setReferenceId($document->getId());
 			$topic->save();
@@ -221,7 +204,7 @@ class brand_SpaceService extends f_persistentdocument_DocumentService
 			$website = DocumentHelper::getDocumentInstance($document->getWebsiteId());
 			if (!brand_BrandService::getInstance()->isPublishedInWebsite($document->getBrand(), $website))
 			{
-				$this->setActivePublicationStatusInfo($document, 'm.brand.document.space.publication.brand-not-published-in-website');
+				$this->setActivePublicationStatusInfo($document, '&modules.brand.document.space.publication.brand-not-published-in-website;');
 				$result = false;
 			}
 		}
@@ -237,12 +220,12 @@ class brand_SpaceService extends f_persistentdocument_DocumentService
 		$ds = $systemtopic->getDocumentService();
 		if (!$space->isPublished())
 		{
-			$this->setActivePublicationStatusInfo($systemtopic, 'm.brand.document.space.systemtopic-publication.space-not-published');
+			$this->setActivePublicationStatusInfo($systemtopic, '&modules.brand.document.space.systemtopic-publication.space-not-published;');
 			return false;
 		}
 		if (!$ds->hasPublishedPages($systemtopic))
 		{
-			$this->setActivePublicationStatusInfo($systemtopic, 'm.brand.document.space.systemtopic-publication.has-no-published-page');
+			$this->setActivePublicationStatusInfo($systemtopic, '&modules.brand.document.space.systemtopic-publication.has-no-published-page;');
 			return false;
 		}
 		return true;
@@ -250,7 +233,7 @@ class brand_SpaceService extends f_persistentdocument_DocumentService
 
 	/**
 	 * @param brand_persistentdocument_space $document
-	 * @param String $oldPublicationStatus
+	 * @param string $oldPublicationStatus
 	 * @param array<"cause" => String, "modifiedPropertyNames" => array, "oldPropertyValues" => array> $params
 	 * @return void
 	 */

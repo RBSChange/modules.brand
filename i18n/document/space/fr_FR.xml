@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <i18n baseKey="m.brand.document.space" lcid="fr_FR">
-  <key id="document-name">espace marque</key>
-  <key id="brand">marque</key>
-  <key id="mount-parent">point de montage</key>
-  <key id="mount-parent-help">Rubrique ou site dans lequel cet espace marque doit apparaître.</key>
+	<key id="document-name">espace marque</key>
+	<key id="brand">marque</key>
+	<key id="mount-parent">point de montage</key>
+	<key id="mount-parent-help">Rubrique ou site dans lequel cet espace marque doit apparaître.</key>
 </i18n>

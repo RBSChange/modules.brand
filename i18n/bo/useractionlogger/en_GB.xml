@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <i18n baseKey="m.brand.bo.useractionlogger" lcid="en_GB">
-  <key id="insert-space">insert.space {documentlabel}</key>
-  <key id="log-insert-space">log insert space</key>
-  <key id="log-update-brand">log update brand</key>
-  <key id="update-brand">update.brand {lang} {documentlabel}</key>
+	<key id="insert-space">insert.space {documentlabel}</key>
+	<key id="log-insert-space">log insert space</key>
+	<key id="log-update-brand">log update brand</key>
+	<key id="update-brand">update.brand {lang} {documentlabel}</key>
 </i18n>

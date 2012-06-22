@@ -1,9 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <i18n baseKey="m.brand.bo.general" lcid="fr_FR">
-  <key id="module-name">marques</key>
-  <key id="tree-root-name">marques</key>
-  <key id="system-folder-name">marques</key>
-  <key id="confirm-delete-space">Êtes-vous sûr de vouloir supprimer cet espace ?</key>
-  <key id="invalid-space">Le conteneur doit être un espace marque.</key>
-  <key id="space-already-contains-pages">La rubrique associée à cet espace marque contient déjà des pages.</key>
+	<key id="module-name">marques</key>
+	<key id="tree-root-name">marques</key>
+	<key id="system-folder-name">marques</key>
+	<key id="confirm-delete-space">Êtes-vous sûr de vouloir supprimer cet espace ?</key>
+	<key id="invalid-website-or-topic">Le conteneur doit être un site web ou une rubrique.</key>
+	<key id="some-pages-already-initialized">Certaines pages de la structure ont déjà été initialisées.</key>
+	<key id="invalid-space">Le conteneur doit être un espace marque.</key>
+	<key id="space-already-contains-pages">La rubrique associée à cet espace marque contient déjà des pages.</key>
 </i18n>

@@ -28,7 +28,7 @@ class brand_persistentdocument_space extends brand_persistentdocument_spacebase
 	}
 	
 	/**
-	 * @return Integer
+	 * @return integer
 	 */
 	public function getMountParentId()
 	{
@@ -37,7 +37,7 @@ class brand_persistentdocument_space extends brand_persistentdocument_spacebase
 	}
 	
 	/**
-	 * @param Integer $parentId
+	 * @param integer $parentId
 	 */
 	public function setMountParentId($parentId)
 	{

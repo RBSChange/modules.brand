@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <i18n baseKey="m.brand.document.space.systemtopic-publication" lcid="fr_FR">
-  <key id="space-not-published">l'espace marque associé n'est pas publié</key>
-  <key id="has-no-published-page">ne contient aucune page publiée</key>
+	<key id="space-not-published">l'espace marque associé n'est pas publié</key>
+	<key id="has-no-published-page">ne contient aucune page publiée</key>
 </i18n>
