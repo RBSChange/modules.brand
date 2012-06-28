@@ -3,7 +3,7 @@
 	<properties>
 		<property name="publicationstatus" localized="true" />
 		<property name="codeReference" type="String" indexed="property" />
-		<property name="visual" type="modules_media/media" />
+		<property name="visual" type="Document" document-type="modules_media/media" />
 		<property name="description" type="XHTMLFragment" localized="true" indexed="description" />
 		<property name="websiteUrl" type="String" localized="true" indexed="none" />
 		<property name="firstLetter" type="String" />
