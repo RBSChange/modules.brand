@@ -11,7 +11,7 @@
 	</block>
 	<block type="modules_brand_brandList" icon="list-block">
 		<parameters>
-			<parameter name="topshelf" type="modules_catalog/topshelf" />
+			<parameter name="topshelf" type="Document" document-type="modules_catalog/topshelf" />
 			<parameter name="paginated" type="Boolean" default-value="true" />
 			<parameter name="itemsPerPage" type="Integer" default-value="20" hidehelp="true" />
 			<parameter name="showDetailedList" type="Boolean" default-value="false" />
@@ -34,7 +34,7 @@
 	</block>
 	<block type="modules_brand_brandProducts" icon="list-block">
 		<parameters>
-			<parameter name="brand" type="modules_brand/brand" />
+			<parameter name="brand" type="Document" document-type="modules_brand/brand" />
 			<parameter name="displayMode" type="String" min-occurs="1" default-value="List" fieldtype="dropdownlist" />
 			<parameter name="nbresultsperpage" type="Integer" default-value="12" min-occurs="1" />
 			<parameter name="sortRandom" type="Boolean" default-value="false" />

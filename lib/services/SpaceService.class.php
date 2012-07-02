@@ -204,7 +204,7 @@ class brand_SpaceService extends f_persistentdocument_DocumentService
 			$website = DocumentHelper::getDocumentInstance($document->getWebsiteId());
 			if (!brand_BrandService::getInstance()->isPublishedInWebsite($document->getBrand(), $website))
 			{
-				$this->setActivePublicationStatusInfo($document, '&modules.brand.document.space.publication.brand-not-published-in-website;');
+				$this->setActivePublicationStatusInfo($document, 'm.brand.document.space.publication.brand-not-published-in-website');
 				$result = false;
 			}
 		}
@@ -220,12 +220,12 @@ class brand_SpaceService extends f_persistentdocument_DocumentService
 		$ds = $systemtopic->getDocumentService();
 		if (!$space->isPublished())
 		{
-			$this->setActivePublicationStatusInfo($systemtopic, '&modules.brand.document.space.systemtopic-publication.space-not-published;');
+			$this->setActivePublicationStatusInfo($systemtopic, 'm.brand.document.space.systemtopic-publication.space-not-published');
 			return false;
 		}
 		if (!$ds->hasPublishedPages($systemtopic))
 		{
-			$this->setActivePublicationStatusInfo($systemtopic, '&modules.brand.document.space.systemtopic-publication.has-no-published-page;');
+			$this->setActivePublicationStatusInfo($systemtopic, 'm.brand.document.space.systemtopic-publication.has-no-published-page');
 			return false;
 		}
 		return true;
