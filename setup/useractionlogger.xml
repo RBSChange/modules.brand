@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <script>
-  <binding fileName="modules/useractionlogger/persistentdocument/import/useractionlogger_binding.xml"/>
-  <actiondef modulename="brand" actionname="update.brand" label="m.brand.bo.useractionlogger.update-brand"/>
-  <actiondef modulename="brand" actionname="insert.brand" label="modules.brand.bo.useractionlogger.insert-brand"/>
-  <actiondef modulename="brand" actionname="move.brand" label="modules.brand.bo.useractionlogger.move-brand"/>
-  <actiondef modulename="brand" actionname="insert.space" label="m.brand.bo.useractionlogger.insert-space"/>
+	<binding fileName="modules/useractionlogger/persistentdocument/import/useractionlogger_binding.xml" />
+	<actiondef modulename="brand" actionname="update.brand" label="m.brand.bo.useractionlogger.update-brand" />
+	<actiondef modulename="brand" actionname="insert.brand" label="modules.brand.bo.useractionlogger.insert-brand" />
+	<actiondef modulename="brand" actionname="move.brand" label="modules.brand.bo.useractionlogger.move-brand" />
+	<actiondef modulename="brand" actionname="insert.space" label="m.brand.bo.useractionlogger.insert-space" />
 </script>

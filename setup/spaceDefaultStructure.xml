@@ -3,13 +3,12 @@
 	<binding fileName="modules/media/persistentdocument/import/media_binding.xml" />
 	<binding fileName="modules/brand/persistentdocument/import/brand_binding.xml" />
 	<binding fileName="modules/website/persistentdocument/import/website_binding.xml" />
-
 	<documentRef byDocumentId-attr="" type-attr="">
 		<page label="Détail d'une marque" isIndexPage="true" indexingstatus="false" navigationVisibility="hidden">
 			<changecontent for="content-block">
 				<changeblock type="modules_brand_brand" __cmpref-attr="brandId" />
 				<changeblock type="modules_brand_brandProducts" __cmpref-attr="brandId" />
 			</changecontent>
-		</page>	
+		</page>
 	</documentRef>
 </script>

@@ -81,7 +81,7 @@
 				<parameter name="rowNode" />
 				<parameter name="rowData" />
 				<body><![CDATA[
-					if (this.disabled) {return;}		
+					if (this.disabled) {return;}
 					var uri = ['brand', 'openDocument', rowData.editorModel, rowData.id].join(',');
 					var fromuri = ['brand', 'openDocument', rowData.brandEditorModel, rowData.brandId, 'spaces'].join(',');
 					openActionUri(uri, fromuri);
@@ -92,13 +92,13 @@
 				<parameter name="rowNode" />
 				<parameter name="rowData" />
 				<body><![CDATA[
-					if (confirm("&modules.brand.bo.general.Confirm-delete-space;"))
+					if (confirm("${trans:m.brand.bo.general.confirm-delete-space,ucf,js}"))
 					{
 						var me = this;
 						var callBack = function(result) {
 							var dataset = me.buildDataset();
 							if (dataset.length > 0)
-							{						
+							{
 								me.updateDataset(dataset.filter(function(row, indice, ds){return row !== rowData}));
 							};
 						};
