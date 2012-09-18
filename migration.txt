@@ -1,0 +1,9 @@
+Last merge with 3.6 : https://github.com/RBSChange/modules.brand/commit/ecf66f0785dbeb89973d5528e9babf2a0ac54f95
+
+removed function :
+
+removed class :
+
+removed interface :
+
+removed block configuration :
