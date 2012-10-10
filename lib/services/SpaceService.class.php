@@ -239,7 +239,7 @@ class brand_SpaceService extends f_persistentdocument_DocumentService
 	 */
 	protected function publicationStatusChanged($document, $oldPublicationStatus, $params)
 	{
-		if ($document->isPublished() || $oldPublicationStatus == 'PUBLICATED')
+		if ($document->isPublished() || $oldPublicationStatus == 'PUBLISHED')
 		{	
 			$topic = $document->getTopic();
 			$topic->getDocumentService()->publishIfPossible($topic->getId());
