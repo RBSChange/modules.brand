@@ -178,20 +178,41 @@ class brand_SpaceService extends f_persistentdocument_DocumentService
 		{
 			throw new BaseException('There may be only one space by website for a given brand.', 'modules.brand.document.space.exception.Only-one-space-by-website');
 		}
-		
-		// Fix referenceId if set to -1 (when the topic is created in the pre-save).
+	}
+	
+	/**
+	 * @param brand_persistentdocument_space $document
+	 * @param Integer $parentNodeId Parent node ID where to save the document (optionnal).
+	 * @return void
+	 */
+	protected function postInsert($document, $parentNodeId)
+	{
+		parent::postInsert($document, $parentNodeId);
+	
 		$topic = $document->getTopic();
-		if ($topic->getReferenceId() === -1)
-		{
-			$topic->setReferenceId($document->getId());
-			$topic->save();
-		}
-		if ($topic->getPublicationstatus() == 'DRAFT')
-		{
-			$topic->activate();
-		}
+		$topic->setReferenceId($document->getId());
+		$topic->save();
+		$topic->activate();
 	}
 
+	/**
+	 * Publish spaces link to a brand and a website
+	 * @param brand_persistentdocument_brand $brand
+	 * @param website_persistentdocument_website $websiteId
+	 */
+	public function publishSpaceIfPossibleByBrandAndWebsiteId($brand, $websiteId)
+	{
+		if ($brand != null)
+		{
+			$space = brand_SpaceService::getInstance()->getByBrandAndWebsiteId($brand, $websiteId);
+			if ($space != null)
+			{
+				return $this->publishIfPossible($space->getId());
+			}
+		}
+		return false;
+	}
+	
 	/**
 	 * @param brand_persistentdocument_space $document
 	 * @return boolean true if the document is publishable, false if it is not.

@@ -20,4 +20,18 @@ class brand_SpaceScriptDocumentElement extends import_ScriptDocumentElement
 	{
 		return f_persistentdocument_PersistentDocumentModel::getInstanceFromDocumentModelName('modules_brand/space');
 	}
+	
+	/**
+	 * @return array
+	 */
+	protected function getDocumentProperties()
+	{
+		$mountPoint = $this->getComputedAttribute('mountPoint');
+		if ($mountPoint)
+		{
+			$this->getPersistentDocument()->setMountParentId($mountPoint->getId());
+		}
+		return parent::getDocumentProperties();
+	}
+	
 }

@@ -162,6 +162,12 @@ class brand_BrandService extends f_persistentdocument_DocumentService
 			|| $oldPublicationStatus === f_persistentdocument_PersistentDocument::STATUS_PUBLISHED)
 		{
 			catalog_ProductService::getInstance()->setNeedCompileForBrand($document);
+			$spaces = brand_SpaceService::getInstance()->getByBrand($document);
+			foreach ($spaces as $space)
+			{
+				/* @var $space brand_persistentdocument_space */
+				$space->getDocumentService()->publishIfPossible($space->getId());
+			}
 		}
 	}
 		

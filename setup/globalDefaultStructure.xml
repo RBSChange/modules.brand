@@ -4,20 +4,18 @@
 	<binding fileName="modules/brand/persistentdocument/import/brand_binding.xml" />
 	<binding fileName="modules/website/persistentdocument/import/website_binding.xml" />
 	<documentRef byDocumentId-attr="" type-attr="">
-		<topic label="Annuaire des marques">
-			<page label="Annuaire des marques" isIndexPage="true" indexingstatus="false" navigationVisibility="hidden">
-				<tag name="contextual_website_website_modules_brand_brandlist" />
-				<changecontent for="content-block">
-					<changeblock type="modules_brand_brandList" />
-				</changecontent>
-			</page>
-			<page label="Détail d'une marque" indexingstatus="false" navigationVisibility="hidden">
-				<tag name="contextual_website_website_modules_brand_brand" />
-				<changecontent for="content-block">
-					<changeblock type="modules_brand_brand" />
-					<changeblock type="modules_brand_brandProducts" />
-				</changecontent>
-			</page>
-		</topic>
+		<page label="Annuaire des marques" isIndexPage="true" indexingstatus="false" navigationVisibility="hidden">
+			<tag name="contextual_website_website_modules_brand_brandlist" />
+			<changecontent for="content-block">
+				<changeblock type="modules_brand_brandList" />
+			</changecontent>
+		</page>
+		<page label="Détail d'une marque" indexingstatus="false" navigationVisibility="hidden">
+			<tag name="contextual_website_website_modules_brand_brand" />
+			<changecontent for="content-block">
+				<changeblock type="modules_brand_brand" />
+				<changeblock type="modules_brand_brandProducts" />
+			</changecontent>
+		</page>
 	</documentRef>
 </script>

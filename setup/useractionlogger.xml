@@ -5,4 +5,9 @@
 	<actiondef modulename="brand" actionname="insert.brand" label="modules.brand.bo.useractionlogger.insert-brand" />
 	<actiondef modulename="brand" actionname="move.brand" label="modules.brand.bo.useractionlogger.move-brand" />
 	<actiondef modulename="brand" actionname="insert.space" label="m.brand.bo.useractionlogger.insert-space" />
+	<actiondef modulename="brand" actionname="delete.space" label="m.brand.bo.useractionlogger.delete-space"/>
+  <actiondef modulename="brand" actionname="deactivated.brand" label="m.brand.bo.useractionlogger.deactivated-brand"/>
+  <actiondef modulename="brand" actionname="reactivate.brand" label="m.brand.bo.useractionlogger.reactivate-brand"/>
+  <actiondef modulename="brand" actionname="deactivated.brand" label="m.brand.bo.useractionlogger.deactivated-brand"/>
+  <actiondef modulename="brand" actionname="reactivate.brand" label="m.brand.bo.useractionlogger.reactivate-brand"/>
 </script>
