@@ -9,7 +9,7 @@ class brand_SpaceService extends f_persistentdocument_DocumentService
 	 * @var brand_SpaceService
 	 */
 	private static $instance;
-
+	
 	/**
 	 * @return brand_SpaceService
 	 */
@@ -21,7 +21,7 @@ class brand_SpaceService extends f_persistentdocument_DocumentService
 		}
 		return self::$instance;
 	}
-
+	
 	/**
 	 * @return brand_persistentdocument_space
 	 */
@@ -29,7 +29,7 @@ class brand_SpaceService extends f_persistentdocument_DocumentService
 	{
 		return $this->getNewDocumentInstanceByModelName('modules_brand/space');
 	}
-
+	
 	/**
 	 * Create a query based on 'modules_brand/space' model.
 	 * Return document that are instance of modules_brand/space,
@@ -79,20 +79,14 @@ class brand_SpaceService extends f_persistentdocument_DocumentService
 		$infos = array('spaces' => array());
 		foreach ($this->getByBrand($brand) as $space)
 		{
-			$infos['spaces'][] = array(
-				'id' => $space->getId(), 
-				'path' => $space->getTopic()->getPathOf(),
-				'status' => $space->getPublicationstatus(), 
-				'editorModel' => $space->getPersistentModel()->getBackofficeName(),
-				'topicId' => $space->getTopic()->getId(),
-				'brandId' => $brand->getId(),
-				'brandEditorModel' => $brand->getPersistentModel()->getBackofficeName()
-			);
+			$infos['spaces'][] = array('id' => $space->getId(), 'path' => $space->getTopic()->getPathOf(), 'status' => $space->getPublicationstatus(), 
+				'editorModel' => $space->getPersistentModel()->getBackofficeName(), 'topicId' => $space->getTopic()->getId(), 
+				'brandId' => $brand->getId(), 'brandEditorModel' => $brand->getPersistentModel()->getBackofficeName());
 		}
 		$infos['spacesJSON'][] = JsonService::getInstance()->encode($infos['spaces']);
 		return $infos;
 	}
-
+	
 	/**
 	 * @param brand_persistentdocument_space $document
 	 * @param Integer $parentNodeId Parent node ID where to save the document.
@@ -110,7 +104,7 @@ class brand_SpaceService extends f_persistentdocument_DocumentService
 		
 		$this->handleMountParent($document);
 	}
-
+	
 	/**
 	 * @param brand_persistentdocument_space $document
 	 * @param Integer $parentNodeId Parent node ID where to save the document.
@@ -158,12 +152,10 @@ class brand_SpaceService extends f_persistentdocument_DocumentService
 		}
 		
 		// Update the website.
-		$website = website_WebsiteService::getInstance()->createQuery()
-			->add(Restrictions::ancestorOf($topic->getId()))
-			->findUnique();
+		$website = website_WebsiteService::getInstance()->createQuery()->add(Restrictions::ancestorOf($topic->getId()))->findUnique();
 		$document->setWebsiteId($website->getId());
 	}
-
+	
 	/**
 	 * @param brand_persistentdocument_space $document
 	 * @param Integer $parentNodeId Parent node ID where to save the document.
@@ -176,7 +168,7 @@ class brand_SpaceService extends f_persistentdocument_DocumentService
 		$topic->setLabel($document->getLabel());
 		$topic->save();
 	}
-
+	
 	/**
 	 * @param brand_persistentdocument_space $document
 	 * @param Integer $parentNodeId Parent node ID where to save the document.
@@ -187,28 +179,46 @@ class brand_SpaceService extends f_persistentdocument_DocumentService
 		parent::postSave($document, $parentNodeId);
 		
 		// Ensure that there may be only space by website for a given brand.
-		$query = $this->createQuery()
-			->add(Restrictions::ne('id', $document->getId()))
-			->add(Restrictions::eq('brand', $document->getBrand()))
-			->add(Restrictions::eq('websiteId', $document->getWebsiteId()));
+		$query = $this->createQuery()->add(Restrictions::ne('id', $document->getId()))->add(Restrictions::eq('brand', $document->getBrand()))->add(Restrictions::eq('websiteId', $document->getWebsiteId()));
 		if ($query->findUnique() !== null)
 		{
 			throw new BaseException('There may be only one space by website for a given brand.', 'modules.brand.document.space.exception.Only-one-space-by-website');
 		}
-		
-		// Fix referenceId if set to -1 (when the topic is created in the pre-save).
-		$topic = $document->getTopic();
-		if ($topic->getReferenceId() === -1)
-		{
-			$topic->setReferenceId($document->getId());
-			$topic->save();
-		}
-		if ($topic->getPublicationstatus() == 'DRAFT')
-		{
-			$topic->activate();
-		}
 	}
-
+	
+	/**
+	 * @param brand_persistentdocument_space $document
+	 * @param Integer $parentNodeId Parent node ID where to save the document (optionnal).
+	 * @return void
+	 */
+	protected function postInsert($document, $parentNodeId)
+	{
+		parent::postInsert($document, $parentNodeId);
+		
+		$topic = $document->getTopic();
+		$topic->setReferenceId($document->getId());
+		$topic->save();
+		$topic->activate();
+	}
+	
+	/**
+	 * Publish spaces link to a brand and a website
+	 * @param brand_persistentdocument_brand $brand
+	 * @param website_persistentdocument_website $websiteId
+	 */
+	public function publishSpaceIfPossibleByBrandAndWebsiteId($brand, $websiteId)
+	{
+		if ($brand != null)
+		{
+			$space = brand_SpaceService::getInstance()->getByBrandAndWebsiteId($brand, $websiteId);
+			if ($space != null)
+			{
+				return $this->publishIfPossible($space->getId());
+			}
+		}
+		return false;
+	}
+	
 	/**
 	 * @param brand_persistentdocument_space $document
 	 * @return boolean true if the document is publishable, false if it is not.
@@ -227,7 +237,7 @@ class brand_SpaceService extends f_persistentdocument_DocumentService
 		}
 		return $result;
 	}
-
+	
 	/**
 	 * @param brand_persistentdocument_space $space
 	 * @param website_persistentdocument_systemtopic $systemtopic
@@ -247,7 +257,7 @@ class brand_SpaceService extends f_persistentdocument_DocumentService
 		}
 		return true;
 	}
-
+	
 	/**
 	 * @param brand_persistentdocument_space $document
 	 * @param String $oldPublicationStatus
@@ -257,12 +267,12 @@ class brand_SpaceService extends f_persistentdocument_DocumentService
 	protected function publicationStatusChanged($document, $oldPublicationStatus, $params)
 	{
 		if ($document->isPublished() || $oldPublicationStatus == 'PUBLICATED')
-		{	
+		{
 			$topic = $document->getTopic();
 			$topic->getDocumentService()->publishIfPossible($topic->getId());
 		}
 	}
-
+	
 	/**
 	 * @param website_UrlRewritingService $urlRewritingService
 	 * @param brand_persistentdocument_space $document
@@ -274,5 +284,5 @@ class brand_SpaceService extends f_persistentdocument_DocumentService
 	public function getWebLink($urlRewritingService, $document, $website, $lang, $parameters)
 	{
 		return $urlRewritingService->getDocumentLinkForWebsite($document->getBrand(), $website, $lang, $parameters);
-	}	
+	}
 }

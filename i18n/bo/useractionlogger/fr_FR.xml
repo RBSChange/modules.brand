@@ -4,4 +4,10 @@
   <key id="log-update-brand">log update brand</key>
   <key id="insert-space">insert.space {documentlabel}</key>
   <key id="log-insert-space">log insert space</key>
+  <key id="delete-space">delete.space {documentlabel}</key>
+  <key id="log-delete-space">log delete space</key>
+  <key id="deactivated-brand">deactivated.brand {lang} {documentlabel}</key>
+  <key id="log-deactivated-brand">log deactivated brand</key>
+  <key id="reactivate-brand">reactivate.brand {lang} {documentlabel}</key>
+  <key id="log-reactivate-brand">log reactivate brand</key>
 </i18n>
